@@ -64,10 +64,10 @@ See the full license at [https://www.gnu.org/licenses/](https://www.gnu.org/lice
 ## Software URL {#software-url}
 
 HaploGI source code is available at:  
-👉 [https://github.com/RafPrograms/HaploGI/src](https://github.com/RafPrograms/HaploGI/src)
+👉 [https://github.com/RafPrograms/HaploGI/tree/main/src](https://github.com/RafPrograms/HaploGI/src)
 
 HaploGI documentation together with a parameter file template to run the program are available at:  
-👉 [https://github.com/RafPrograms/HaploGI/docs](https://github.com/RafPrograms/HaploGI/docs)
+👉 [https://github.com/RafPrograms/HaploGI/tree/main/docs](https://github.com/RafPrograms/HaploGI/docs)
 
 ---
 
