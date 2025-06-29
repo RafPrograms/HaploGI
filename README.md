@@ -24,6 +24,7 @@ University of Washington
 - [Software URL](#software-url)
 - [Data Example](#data-example)
 - [HaploGI Utility Scripts](#haplogi-utility-scripts)
+- [Support](#support)
 
 ------------------------------------------------------------------------
 
@@ -85,3 +86,8 @@ A number of Python utility scripts are available to assist with preparing HaploG
 
 ------------------------------------------------------------------------
 
+## Support
+
+For questions, bug reports, or suggestions, please contact:  
+📧 nrafscience@gmail.com  
+🔗 [GitHub Issues](https://github.com/RafPrograms/HaploGI/issues)
