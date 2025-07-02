@@ -323,7 +323,7 @@ HaploGI uses this set of cases to **check for the existence of haplotype sharing
 
 ### Example Output Files
 
-- **Haplotype Sequences File** – see [Haplotype Sequences File Format](#haplotype-sequences-file-format)  
+- **Haplotype Sequences File** – see [Haplotype Sequences File Format](#haplotype-sequences-file-format)
 
 - **Core Set of Cases** – see [Core Set of Cases File Format](#core-set-of-cases-file-format)
 
