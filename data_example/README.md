@@ -12,8 +12,8 @@ University of Washington
 - [Folder Structure](#folder-structure)
 - [Description](#description)
 - [How to Run This Example](#how-to-run-this-example)
-- [HaploGI Utility Scripts](#haplogi-utility-scripts)
-- [Citation](#citation)
+- [HaploGI Utility Scripts](#-haplogi-utility-scripts)
+- [Citation](#-citation)
 - [References](#references)
 - [Web Resources](#web-resources)
 - [License](#license)
@@ -44,7 +44,7 @@ Multipoint linkage analysis was performed as described in Nafikov et al., 2018 t
 <p align="center"><strong>Figure 2:</strong> Linkage analysis plot for chromosome 16, ped52 pedigree.</p>
 
 
-A text file with linkage-marker specific LOD scores can be found at [chr16_ped52_LOD_scores.txt](https://github.com/RafPrograms/HaploGI/tree/main/data_example) – Text file with marker-specific LOD scores.
+A text file with linkage-marker specific LOD scores can be found at [chr16_ped52_LOD_scores.txt](https://github.com/RafPrograms/HaploGI/tree/main/data_example/background) – Text file with marker-specific LOD scores.
 
 ---
 
