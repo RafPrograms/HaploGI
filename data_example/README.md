@@ -12,7 +12,7 @@ University of Washington
 - [Folder Structure](#folder-structure)
 - [Description](#description)
 - [How to Run This Example](#how-to-run-this-example)
-- [HaploGI Utility Scripts](#-haplogi-utility-scripts)
+- [HaploGI Utility Scripts](#haplogi-utility-scripts)
 - [Citation](#-citation)
 - [References](#references)
 - [Web Resources](#web-resources)
