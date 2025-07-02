@@ -44,7 +44,7 @@ Multipoint linkage analysis was performed as described in Nafikov et al., 2018 t
 <p align="center"><strong>Figure 2:</strong> Linkage analysis plot for chromosome 16, ped52 pedigree.</p>
 
 
-A text file with linkage-marker specific LOD scores can be found at 📄 [chr16_ped52_LOD_scores.txt](https://github.com/RafPrograms/HaploGI/tree/main/data_example/chr16_ped52_LOD_scores.txt) – Text file with marker-specific LOD scores.
+A text file with linkage-marker specific LOD scores can be found at [chr16_ped52_LOD_scores.txt](https://github.com/RafPrograms/HaploGI/tree/main/data_example) – Text file with marker-specific LOD scores.
 
 ---
 
@@ -130,7 +130,7 @@ Make sure that you specify the correct file paths and desired output directory i
 
 For full details on how to test-run `HaploGI`, and for descriptions of required input/output file formats, refer to the following resources:
 
-- 📄 [HaploGI manual (Markdown)](https://github.com/RafPrograms/HaploGI/tree/main/docs/readme.md)  
+- 📄 [HaploGI manual (Markdown)](https://github.com/RafPrograms/HaploGI/tree/main/docs)  
 or
 - 📑 [HaploGI manual (PDF)](https://github.com/RafPrograms/HaploGI/blob/main/docs/manual_HaploGI_v1.0.25.pdf)
 
