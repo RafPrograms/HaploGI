@@ -163,8 +163,9 @@ python risk_haplotype_sequence_vcf.py \
       --haplotypes ./input_files/shared_haplotype.txt \
       --vcf ./input_files/1000_Genomes_Project_chr16_unphased.vcf.gz \
       --positions ./input_files/chr16_SNV_genomic_positions_B38.txt \
-      --output_dir ./output_files
+      --output_dir ./output_files_test
 ```
+📌 Note: Make sure to create the output directory using mkdir before running the script, if you are specifying --output_dir and it does not already exist.
 
 ---
 
