@@ -119,10 +119,10 @@ python create_phased_vcf.py \
 
 ## Output Files
 
-### 🔹 `HaploGI_phased_WGS_data.vcf`:  
+### 🟢 `HaploGI_phased_WGS_data.vcf`:  
   Filtered, VCF v4.2-compliant output with phased genotypes where possible
 
-### 🔹 `log_file.txt`:  
+### 🟢 `log_file.txt`:  
   Summary of processing steps and warnings
    
 ---

@@ -126,7 +126,7 @@ python risk_haplotype_sequence_vcf.py \
 
 ## Output Files
 
-### 🔹 `genomic_windows.txt`:  
+### 🟢 `genomic_windows.txt`:  
   
 
 ```bash
@@ -144,10 +144,10 @@ Where each row represents a genomic window, and the columns are as follows:
 
 - var1_cM_pos and var20_cM_pos: The genomic position in centimorgan (cM) for the 1st and 20th variants within the genomic window.
 
-### 🔹 `risk_haplotype.vcf`:  
+### 🟢 `risk_haplotype.vcf`:  
   VCF v4.2-compliant output containing the phased risk haplotype sequences. 
 
-### 🔹 `risk_haplotype_sequence_vcf.log`:  
+### 🟢 `risk_haplotype_sequence_vcf.log`:  
   A log summary of the processing steps, including any warnings and errors encountered during execution.
    
 ---
