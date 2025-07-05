@@ -89,7 +89,7 @@ python create_phased_vcf.py \
 
 ## Input Files
 
-### 🔹 `haplotype_sequences.txt`
+### 🔷 `haplotype_sequences.txt`
 ```bash
 16:1052701-1055604 302_0 11111111111111111111 
 16:1052701-1055604 302_1 22222212211222211212 
@@ -101,7 +101,7 @@ python create_phased_vcf.py \
 - Sample ID with haplotype suffix `_0` or `_1`
 - Phased sequence string for the region
 
-### 🔹 `SNV_genomic_positions.txt`
+### 🔷 `SNV_genomic_positions.txt`
 ```bash
 1052701 3.767099
 1052874 3.767696
@@ -111,7 +111,7 @@ python create_phased_vcf.py \
 - Physical base pair position for each variant
 - Genomic position of the variant in cM
 
-### 🔹 `unphased_WGS_data.vcf`
+### 🔷 `unphased_WGS_data.vcf`
 
 - Standard VCF with unphased genotypes
 

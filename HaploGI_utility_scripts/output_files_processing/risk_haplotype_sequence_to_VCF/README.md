@@ -96,7 +96,7 @@ python risk_haplotype_sequence_vcf.py \
 
 ## Input Files
 
-### 🔹 `shared_haplotype.txt`
+### 🔷 `shared_haplotype.txt`
 ```bash
 16:1052701-1055604 22222212211222211212
 16:1127696-1132994 11111222221112211212
@@ -108,7 +108,7 @@ python risk_haplotype_sequence_vcf.py \
 - Sample ID with haplotype suffix `_0` or `_1`
 - Phased sequence string for the region
 
-### 🔹 `chr16_SNV_genomic_positions_B38`
+### 🔷 `chr16_SNV_genomic_positions_B38`
 ```bash
 1052701 3.767099
 1052874 3.767696
@@ -118,7 +118,7 @@ python risk_haplotype_sequence_vcf.py \
 - Physical base pair position for each variant
 - Genomic position of the variant in cM
 
-### 🔹 `unphased_WGS_data.vcf`
+### 🔷 `unphased_WGS_data.vcf`
 
   A standard VCF file containing unphased genotypes, which is used as input to generate the genotype data file for the HaploGI run.
 

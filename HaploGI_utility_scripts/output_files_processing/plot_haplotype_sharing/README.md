@@ -134,7 +134,7 @@ This file contains a list of **case subject IDs**, separated by spaces, all on a
 
 HaploGI uses this set of cases to **check for the existence of haplotype sharing** among them.
 
-#### 🔷 Haplotype Sharing Patterns File Format:
+### 🔷 Haplotype Sharing Patterns File Format:
 
 ```bash
 Genomic_window 302 302 303 303 306 306 307 307 402 402 403 403 404 404 406 406 407 407 408 408 410 410 411 411 412 412 414 414 415 415 416 416 501 501 502 502 503 503 504 504 505 505 506 506 507 507 508 508 509 509 510 510 511 511 512 512 513 513 514 514 515 515 516 516

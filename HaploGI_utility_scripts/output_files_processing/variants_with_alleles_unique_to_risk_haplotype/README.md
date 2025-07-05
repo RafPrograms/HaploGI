@@ -100,11 +100,11 @@ Run the script from the command line with the required inputs:
 
 ## Input Files
 
-### 🔹 `1000_Genomes_Project_chr16_unphased.vcf.gz`
+### 🔷 `1000_Genomes_Project_chr16_unphased.vcf.gz`
 - Standard VCF file containing unphased genotypes.
 - Used as input to generate the SNV genotypes file for HaploGI runs.
 
-### 🔹 `chr16_SNV_genotypes_B38.txt`
+### 🔷 `chr16_SNV_genotypes_B38.txt`
 ```bash
 variant_position 302 302 303 303 306 306 307 307 402 402 403 403 404 404 406 406 407 407 408 408 410 410 411 411 412 412 414 414 415 415 416 416 501 501 502 502 503 503 504 504 505 505 506 506 507 507 508 508 509 509 510 510 511 511 512 512 513 513 514 514 515 515 516 516
 16:10414 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
@@ -129,7 +129,7 @@ The SNV genotype file contains variant genotype data for subjects with whole gen
   Lists subject IDs. Each subject ID appears **twice**, corresponding to their two genotype alleles.
 
 
-### 🔹 `core_set_of_cases.txt`
+### 🔷 `core_set_of_cases.txt`
 ```bash
 302 306 403 408 411 501 504 506 511 512 513 516
 ```
@@ -140,7 +140,7 @@ This file contains a list of **case subject IDs**, separated by spaces, all on a
 
 HaploGI uses this set of cases to **check for the existence of haplotype sharing** among them.
 
-### 🔹 `haplotype_sharing_controls.txt`
+### 🔷 `haplotype_sharing_controls.txt`
 ```bash
 404 503
 ```
