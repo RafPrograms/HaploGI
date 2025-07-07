@@ -109,7 +109,10 @@ python dicrease_number_of_MI_iterations.py --MI ./input_files/chr16_ped52_5000_i
                                            --output_dir ./output_files_test
 ```
 
-📌 Note: Make sure to create the output directory using mkdir before running the script, if you are specifying --output_dir and it does not already exist.
+📌 Note: If you specify `--output_dir`, make sure that directory exists before running the script:
+```bash
+ mkdir -p ./output_files_test
+```
 
 ---
 

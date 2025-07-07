@@ -100,14 +100,14 @@ python plot_haplotype_sharing.py \
 
 | Argument       | Required | Description                                                              |
 |----------------|----------|--------------------------------------------------------------------------|
-| --pedigree     | Yes      | Path to the pedigree file with family and individual IDs                 |
-| --positions    | Yes      | Path to the genomic windows file (`genomic_windows.txt`)                 |
-| --haploshare   | Yes      | Path to the `.mat` file containing haplotype sharing results             |
-| --set          | Yes      | Path to the file listing subject IDs to plot                             |
-| --roi          | No       | Genomic region of interest (`chr:start-end`) to highlight in the plot    |
-| --x_start      | No       | Optional start window number for x-axis zooming                          |
-| --x_end        | No       | Optional end window number for x-axis zooming                            |
-| --outdir       | No       | Directory where output plots will be saved (default: current directory)  |
+| `--pedigree`     | Yes      | Path to the pedigree file with family and individual IDs                 |
+| `--positions`    | Yes      | Path to the genomic windows file (`genomic_windows.txt`)                 |
+| `--haploshare`   | Yes      | Path to the `.mat` file containing haplotype sharing results             |
+| `--set`          | Yes      | Path to the file listing subject IDs to plot                             |
+| `--roi`          | No       | Genomic region of interest (`chr:start-end`) to highlight in the plot    |
+| `--x_start`      | No       | Optional start window number for x-axis zooming                          |
+| `--x_end`        | No       | Optional end window number for x-axis zooming                            |
+| `--outdir`       | No       | Directory where output plots will be saved (default: current directory)  |
 
 ---
 
@@ -251,7 +251,10 @@ python plot_haplotype_sharing.py \
          --roi 5.022725-17.458897-35.141074 \
          --outdir ./output_files_test
 ```
-📌 Note: Make sure to create the output directory using mkdir before running the script, if you are specifying --output_dir and it does not already exist.
+📌 Note: If you specify `--output_dir`, make sure that directory exists before running the script:
+```bash
+ mkdir -p ./output_files_test
+```
 
 ---
 

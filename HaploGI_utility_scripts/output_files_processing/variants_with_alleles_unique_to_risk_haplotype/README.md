@@ -188,7 +188,10 @@ python risk_alleles_variants.py --start_pos 1831445 \
    
 ```
  
-📌 Note: Make sure to create the output directory using mkdir before running the script, if you are specifying --output_dir and it does not already exist.
+📌 Note: If you specify `--output_dir`, make sure that directory exists before running the script:
+```bash
+ mkdir -p ./output_files_test
+```
 
 ---
 
