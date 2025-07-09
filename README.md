@@ -28,13 +28,13 @@ University of Washington
 
 ------------------------------------------------------------------------
 
-## Introduction {#introduction}
+## Introduction (#introduction)
 
 **HaploGI** (Haplotyping Given Inheritance) performs **pedigree-based haplotyping** of Whole Genome Sequencing (WGS) data and determines haplotype sharing between subjects from a specified group of cases.
 
 ------------------------------------------------------------------------
 
-## Paper Citation {#paper-citation}
+## Paper Citation (#paper-citation)
 
 If you use **HaploGI** in your work, please cite:
 
@@ -43,7 +43,7 @@ Nafikov, R. A., Sohi, H., Nato Jr, A. Q., Horimoto, A. R., Bird, T. D., DeStefan
 
 ------------------------------------------------------------------------
 
-## Software DOI {#software-doi}
+## Software DOI (#software-doi)
 
 Please cite this software as:
 
@@ -53,7 +53,7 @@ Nafikov et al., HaploGI – Haplotyping Given Inheritance (version 1.0.25), 2025
 
 ------------------------------------------------------------------------
 
-## License {#license}
+## License (#license)
 
 HaploGI is a C++ program released under the **GNU General Public License v3.0**.\
 See the full license at <https://www.gnu.org/licenses/>.
@@ -62,7 +62,7 @@ See the full license at <https://www.gnu.org/licenses/>.
 
 ------------------------------------------------------------------------
 
-## Software URL {#software-url}
+## Software URL (#software-url)
 
 HaploGI source code is available at:\
 👉 <https://github.com/RafPrograms/HaploGI/tree/main/src>
@@ -72,7 +72,7 @@ HaploGI documentation together with a parameter file template to run the program
 
 ------------------------------------------------------------------------
 
-## Data Example {#data-example}
+## Data Example (#data-example)
 
 Downloadable ZIP with example input/output for each run option is available at:\
 👉 <https://github.com/RafPrograms/HaploGI/tree/main/data_example>
@@ -86,7 +86,7 @@ A number of Python utility scripts are available to assist with preparing HaploG
 
 ------------------------------------------------------------------------
 
-## Support {#support}
+## Support (#support)
 
 For questions, bug reports, or suggestions, please contact:\
 📧 [nrafscience\@gmail.com](mailto:nrafscience@gmail.com){.email}\
