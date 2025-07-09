@@ -19,7 +19,7 @@ University of Washington
 
 - [Introduction](#introduction)
 - [Paper Citation](#paper-citation)
-- [Software Citation](#software-doi)
+- [Software Citation](#software-citation)
 - [License](#license)
 - [Software URL](#software-url)
 - [Data Example](#data-example)
@@ -64,15 +64,6 @@ If you use **HaploGI** in your research, please also cite the following:
 
 This repository includes a [`CITATION.cff`](https://citation-file.org/) file.  
 On GitHub, click the **“Cite this repository”** button near the top to get citation details in various formats.
-
----
-
-## Software DOI
-
-Please cite this software as:
-
-Nafikov et al., *HaploGI – Haplotyping Given Inheritance* (version 1.0.0), 2025. DOI: [to be added]  
-*A Zenodo DOI will be provided upon release.*
 
 ---
 
