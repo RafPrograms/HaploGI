@@ -6748,7 +6748,7 @@ void show_program_info()
 {
 
 std::string message = R"(
-HaploGI - version: 1.0.25
+HaploGI - version: 1.0.0
 © Rafael Nafikov 2025
 
 Licenced under GNU General Public License (GPLv3), 
