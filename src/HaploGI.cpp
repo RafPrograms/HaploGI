@@ -188,7 +188,7 @@ void Combinations::getCombs(int offset_in, int k_in)
         all_combs.push_back(comb);
         return;
     }
-    for (int i = offset; i <= init_numbs->size() - k; ++i)
+    for (size_t i = offset; i <= init_numbs->size() - k; ++i)
     {
         comb.push_back((*init_numbs)[i]);
         getCombs(i + 1, k - 1);
@@ -317,8 +317,8 @@ public:
 
 bool NumberList::checkListEmpty()
 {
-    ListNode *nodePtr;
-    if (nodePtr = nullptr)
+    ListNode *nodePtr = nullptr;
+    if (nodePtr == nullptr)
     {
         return true;
     }
@@ -549,7 +549,7 @@ void Pedigree_info::printPedigree()
     << "  " << "WGS_data" << "  " << "mat_3D_pos" << "  " << "pat_3D_pos" 
     << "  " << "subject_id_orig" << "  " << "father_id_orig" << "  " << "mother_id_orig" << std::endl;
 
-    for (int i = 0; i < cur_ped.size(); ++i)
+    for (size_t i = 0; i < cur_ped.size(); ++i)
     {
         std::cout << cur_ped[i].subject_id << "  " << cur_ped[i].father_id << "  " << cur_ped[i].mother_id << "  "
         << cur_ped[i].subject_sex << "  " << cur_ped[i].pheno << "  " << cur_ped[i].mat_mi << "  " 
@@ -562,11 +562,11 @@ void Pedigree_info::printPedigree()
 void Pedigree_info::generateTempIDs()
 {
 
-    for (int i = 0; i < cur_ped.size(); ++i)
+    for (size_t i = 0; i < cur_ped.size(); ++i)
     {    
         if (cur_ped[i].father_id_orig.compare("0") != 0) // different
         {
-            for (int j = 0; j < cur_ped.size(); ++j)
+            for (size_t j = 0; j < cur_ped.size(); ++j)
             {
                 if (cur_ped[i].father_id_orig.compare(cur_ped[j].subject_id_orig) == 0)
                 {
@@ -582,7 +582,7 @@ void Pedigree_info::generateTempIDs()
 
         if (cur_ped[i].mother_id_orig.compare("0") != 0) // different
         {
-            for (int j = 0; j < cur_ped.size(); ++j)
+            for (size_t j = 0; j < cur_ped.size(); ++j)
             {
                 if (cur_ped[i].mother_id_orig.compare(cur_ped[j].subject_id_orig) == 0)
                 {
@@ -603,7 +603,7 @@ std::string Pedigree_info::convert2TempID(std::string subject_id_orig)
 {
     std::string subject_id_temp;
 
-    for (int i = 0; i < cur_ped.size(); ++i)
+    for (size_t i = 0; i < cur_ped.size(); ++i)
     {
         if (subject_id_orig.compare (cur_ped[i].subject_id_orig) == 0)
         {
@@ -620,7 +620,7 @@ std::string Pedigree_info::convert2OrigID(std::string subject_id_temp)
 {
     std::string subject_id_orig;
 
-    for (int i = 0; i < cur_ped.size(); ++i)
+    for (size_t i = 0; i < cur_ped.size(); ++i)
     {
         if (subject_id_temp.compare (cur_ped[i].subject_id) == 0)
         {
@@ -638,7 +638,7 @@ std::vector<int> Pedigree_info::getCases()
 
     std::vector<int> result1;
 
-    for (int i = 0; i < cur_ped.size(); ++i)
+    for (size_t i = 0; i < cur_ped.size(); ++i)
     {
 
         if (cur_ped[i].pheno == 2) // leave only AD subjects
@@ -655,7 +655,7 @@ int Pedigree_info::getNumWGSlist(std::vector<std::string> &sub_list)
 
     int result1 = 0;
 
-    for (int i = 0; i < sub_list.size(); ++i)
+    for (size_t i = 0; i < sub_list.size(); ++i)
     {
         if (cur_ped[this->getSubjectIndex(sub_list[i])].wgs_data == 1)
         {
@@ -687,7 +687,7 @@ int Pedigree_info::getNumChildren(std::string id)
 
     int children_num = 0;
 
-    for (int i = 0; i < cur_ped.size(); ++i)
+    for (size_t i = 0; i < cur_ped.size(); ++i)
     {
         if (cur_ped[i].father_id.compare(id) == 0 || cur_ped[i].mother_id.compare(id) == 0)
         {
@@ -704,7 +704,7 @@ void Pedigree_info::genMI_FGLrelInfo()
     int mi_num = 0;
     int fgl_num = 0;
 
-    for (int i = 0; i < cur_ped.size(); ++i)
+    for (size_t i = 0; i < cur_ped.size(); ++i)
     {
 
         if (isFounder(i) == 1)
@@ -758,7 +758,7 @@ int Pedigree_info::getNumFounders()
 
     int founders_num = 0;
 
-    for (int i = 0; i < cur_ped.size(); ++i)
+    for (size_t i = 0; i < cur_ped.size(); ++i)
     {
         if (cur_ped[i].father_id.compare("0") == 0 && cur_ped[i].mother_id.compare("0") == 0)
         {
@@ -774,7 +774,7 @@ int Pedigree_info::getNumWGS()
 
     int wgs_num = 0;
 
-    for (int i = 0; i < cur_ped.size(); ++i)
+    for (size_t i = 0; i < cur_ped.size(); ++i)
     {
         if (cur_ped[i].wgs_data == 1)
         {
@@ -788,7 +788,7 @@ int Pedigree_info::getNumWGS()
 int Pedigree_info::getSubjectIndex(std::string id)
 {
 
-    for (int i = 0; i < cur_ped.size(); ++i)
+    for (size_t i = 0; i < cur_ped.size(); ++i)
     {
         if (cur_ped[i].subject_id.compare(id) == 0)
         {
@@ -803,7 +803,7 @@ int Pedigree_info::getNumMeiosisLines()
 {
 
     int meiosis_lines_num = 0;
-    for (int i = 0; i < cur_ped.size(); ++i)
+    for (size_t i = 0; i < cur_ped.size(); ++i)
     {
         if (isFounder(i) == 0)
         {
@@ -920,7 +920,7 @@ std::vector<int> DenseMarkerPos::getWindowBps(int window_num)
 
     std::vector<int> result;
 
-    for (int i = 0; i < windows[window_num - 1].size(); i++)
+    for (size_t i = 0; i < windows[window_num - 1].size(); i++)
     {
         result.push_back(windows[window_num - 1][i]);
     }
@@ -988,9 +988,9 @@ int DenseMarkerPos::getWindowWithBp(int bp_pos_in)
 
     int result1 = -1;
 
-    for(int i=0;i<windows.size();i++)
+    for(size_t i=0;i<windows.size();i++)
     {
-		for(int j=0;j<windows[i].size();j++)
+		for(size_t j=0;j<windows[i].size();j++)
         {
             if (windows[i][j] == bp_pos_in)
             {
@@ -1448,7 +1448,7 @@ void FGL_matrix::setFGL(int variant_bp)
     for (int k = 0; k < dimn1; k++)
     {
 
-        for (int i = 0; i < ped1->cur_ped.size(); i++)
+        for (size_t i = 0; i < ped1->cur_ped.size(); i++)
         {
 
             if (ped1->isFounder(i) == 1)
@@ -1518,7 +1518,7 @@ void FGL_matrix::setFGLfm(double dense_m_cM)
     for (int k = 0; k < dimn1; k++)
     {
 
-        for (int i = 0; i < ped1->cur_ped.size(); i++)
+        for (size_t i = 0; i < ped1->cur_ped.size(); i++)
         {
 
             if (ped1->isFounder(i) == 1)
@@ -1814,7 +1814,7 @@ std::vector<int> FGLshareGroup2::evalFGLshareMain()
   
 
     // identifies vector element # containing value equal to cM position of maxLOD linkage marker
-    for (int i =1; i < roiMarkers.size()-1; i++)
+    for (size_t i =1; i < roiMarkers.size()-1; i++)
     {
         if (maxLODmPoscM > roiMarkers[i-1] && maxLODmPoscM < roiMarkers[i+1])
         {
@@ -1840,7 +1840,7 @@ std::vector<int> FGLshareGroup2::evalFGLshareMain()
 
         std::map<int, std::vector<int>> sharingGrpsRgV2; // keys: arbitrary sequential numbers; values: el0 = # of markers within continues sharing region; el1 += linkage marker positions in ROI where sharing has occured
 
-        for (int i = 0; i < roiMarkers.size(); i++)
+        for (size_t i = 0; i < roiMarkers.size(); i++)
         {
             this->compFGLshare(i, j, sharing4FGL);
         } // end of ROI linkage markers loop
@@ -1919,7 +1919,7 @@ std::vector<std::string> FGLshareGroup2::keepCases(std::vector<std::string> &sub
 
     std::vector<std::string> results;
 
-    for (int i = 0; i < subjects_all.size(); i++)
+    for (size_t i = 0; i < subjects_all.size(); i++)
     {
 
         int SubInd = ped1->getSubjectIndex(subjects_all[i]);
@@ -1943,14 +1943,14 @@ void FGLshareGroup2::recordFGLshareIter(int m_el, int fgl, std::vector<string> &
     temp3.push_back(ped1->getNumWGSlist(same_fgl_cases));// # of sharing cases with WGS data
     temp3.push_back(same_fgl_cases.size());// total # of sharing cases
 
-    for (int i = 0; i < same_fgl_cases.size(); i++)
+    for (size_t i = 0; i < same_fgl_cases.size(); i++)
     {
         temp3.push_back(stoi(same_fgl_cases[i]));// ids of all sharing cases
     }
 
     int fgl_el = fgl - 1;
 
-    for (int i = 0; i < temp3.size(); i++)
+    for (size_t i = 0; i < temp3.size(); i++)
     {
         sharing4FGL[fgl_el][m_el].push_back(temp3[i]);
     }
@@ -1960,7 +1960,7 @@ void FGLshareGroup2::recordFGLshareIter(int m_el, int fgl, std::vector<string> &
 void FGLshareGroup2::selectShareGrp4FGL(std::vector<std::vector<std::vector<int>>> &sharing4FGL, std::map<int, std::vector<int>> &sharingGrpsV2, std::map<int, std::vector<int>> &sharingGrpsRgV2)
 {
 
-    for (int i = 0; i < sharing4FGL.size(); i++) // fgl
+    for (size_t i = 0; i < sharing4FGL.size(); i++) // fgl
     {
 
         std::map<int, std::vector<int>> fglShareIds; // key = sequential number; vector - sharing ids
@@ -1973,27 +1973,27 @@ void FGLshareGroup2::selectShareGrp4FGL(std::vector<std::vector<std::vector<int>
         std::vector <int> shareRg2select;// contains # of markers within largest contiguous sharing region shared by subjects whose number is in ids2select vector with same element #
         std::vector <int> keyHolder;// contains map keys associated with each el in dis2select and shareRg2select vecotrs
 
-        for (int j = 0; j < sharing4FGL[i].size(); j++) // sequential # of a linkage marker in ROI
+        for (size_t j = 0; j < sharing4FGL[i].size(); j++) // sequential # of a linkage marker in ROI
         {
             
             std::vector<int> shareGrpInit; // subjects sharing ith FGL at j linkage marker position
 
             if ((sharing4FGL[i][j].size() - 2)> 1) // -2 because first 2 elements of vector contain different type of information; this insures that we have at least two people sharing same FGL
             {
-                for (int k = 2; k < sharing4FGL[i][j].size(); k++) // starting from 2 because 0 - # of sharing cases with WGS; 1 - # of total sharing cases (with and without WGS)
+                for (size_t k = 2; k < sharing4FGL[i][j].size(); k++) // starting from 2 because 0 - # of sharing cases with WGS; 1 - # of total sharing cases (with and without WGS)
                 {
                     shareGrpInit.push_back(sharing4FGL[i][j][k]);
                 }
             }
 
-                for (int n = 0; n < sharing4FGL[i].size(); n++) // sequential # of a linkage marker in ROI
+                for (size_t n = 0; n < sharing4FGL[i].size(); n++) // sequential # of a linkage marker in ROI
                 {
 
                     std::vector<int> sharePosCur;// subjects sharing ith FGL at nth linkage marker position
 
                     if ((sharing4FGL[i][n].size() -2) > 1)
                     {
-                        for (int k = 2; k < sharing4FGL[i][n].size(); k++) // starting from 2 because 0 - cased with WGS; 1 - cases total (with and without WGS)
+                        for (size_t k = 2; k < sharing4FGL[i][n].size(); k++) // starting from 2 because 0 - cased with WGS; 1 - cases total (with and without WGS)
                         {
                             sharePosCur.push_back(sharing4FGL[i][n][k]);
                         }
@@ -2064,7 +2064,7 @@ void FGLshareGroup2::selectShareGrp4FGL(std::vector<std::vector<std::vector<int>
                     std::vector <int> temp3;
                     temp3.push_back(res1.size());
 
-                    for (int i = 0; i < res1.size(); i++)
+                    for (size_t i = 0; i < res1.size(); i++)
                     {
                         temp3.push_back(res1[i]);         
                     }
@@ -2098,7 +2098,7 @@ void FGLshareGroup2::selectShareGrp4FGL(std::vector<std::vector<std::vector<int>
 
             std::vector<std::string> tp1;
             std::vector<int> shareGrp = fglShareIds[keyHolder[el_num]];
-            for (int i = 0; i < shareGrp.size(); i++)
+            for (size_t i = 0; i < shareGrp.size(); i++)
             {
                 tp1.push_back(std::to_string(shareGrp[i]));
             }
@@ -2107,7 +2107,7 @@ void FGLshareGroup2::selectShareGrp4FGL(std::vector<std::vector<std::vector<int>
             temp1.push_back(ped1->getNumWGSlist(tp1)); // # of subjects with WGS data sharing same FGL
             temp1.push_back(shareGrp.size()); // total # of subjects sharing same FGL
 
-            for (int i = 0; i < shareGrp.size(); i++)
+            for (size_t i = 0; i < shareGrp.size(); i++)
             {
                 temp1.push_back(shareGrp[i]); // subjects sharing same FGL
             }
@@ -2131,7 +2131,7 @@ void FGLshareGroup2::selectShareGrp4FGL(std::vector<std::vector<std::vector<int>
 
                     std::vector<std::string> tp1; // subjects sharing same FGL
                     std::vector<int> shareGrp = fglShareIds[keyHolder[el_num]];
-                    for (int i = 0; i < shareGrp.size(); i++)
+                    for (size_t i = 0; i < shareGrp.size(); i++)
                     {
                         tp1.push_back(std::to_string(shareGrp[i]));
                     }
@@ -2140,7 +2140,7 @@ void FGLshareGroup2::selectShareGrp4FGL(std::vector<std::vector<std::vector<int>
                     temp1.push_back(ped1->getNumWGSlist(tp1)); // # of subjects in shared group with WGS data
                     temp1.push_back(shareGrp.size()); // total # of subjects in shared group
 
-                    for (int i = 0; i < shareGrp.size(); i++)
+                    for (size_t i = 0; i < shareGrp.size(); i++)
                     {
                         temp1.push_back(shareGrp[i]); // sujbects sharing same FGL
                     }
@@ -2177,7 +2177,7 @@ std::vector<int> FGLshareGroup2::detectContShareRegion(std::vector<int> &sharePo
     }
 
     // determines start and end of contiguous shared regions in ROI; should contain two entries per shared region
-    for (int i = 0; i < sharePos.size()-1; i++)
+    for (size_t i = 0; i < sharePos.size()-1; i++)
     {
 
         if ((sharePos[i] == (sharePos[i + 1] - 1)) && status1 == 0)
@@ -2220,7 +2220,7 @@ std::vector<int> FGLshareGroup2::detectContShareRegion(std::vector<int> &sharePo
 
 
     // determines length of contiguous shared region
-    for (int i = 1; i < share_bounds.size(); i++)
+    for (size_t i = 1; i < share_bounds.size(); i++)
     {
         share_size.push_back(share_bounds[i] - share_bounds[i - 1]);
     }
@@ -2236,7 +2236,7 @@ std::vector<int> FGLshareGroup2::detectContShareRegion(std::vector<int> &sharePo
     }
 
 
-    for (int i = 0; i < share_size.size(); i++)
+    for (size_t i = 0; i < share_size.size(); i++)
     {
 
         if (share_size[i] == maxLength)
@@ -2247,7 +2247,7 @@ std::vector<int> FGLshareGroup2::detectContShareRegion(std::vector<int> &sharePo
     }
 
     // outputs linkage marker numbers from largest shared region in ROI into results vector
-    for (int i = 0; i < sharePos.size(); i++)
+    for (size_t i = 0; i < sharePos.size(); i++)
     {
 
         if (i >= selectedShare[0] && i <= selectedShare[1])
@@ -2257,7 +2257,7 @@ std::vector<int> FGLshareGroup2::detectContShareRegion(std::vector<int> &sharePo
     }
 
     // checks whether selected region contains linkage marker with maxLOD score
-    for (int i =0; i< result1.size(); i++)
+    for (size_t i =0; i< result1.size(); i++)
     {
       if (result1[i] == maxLODmPos)
       {
@@ -2290,7 +2290,7 @@ int FGLshareGroup2::detIdShareEl (std::vector<int> ids2select, std::vector<int> 
 
    // selection based on minimum sharing length
     std::vector<int> selectedIds; // nunmber of subjects sharing same FGL selected after passing minimum sharing length threshold
-    for (int i= 0; i < shareReg2select.size(); i++)
+    for (size_t i= 0; i < shareReg2select.size(); i++)
     {
         if (shareReg2select[i] >= minShare)
         {
@@ -2323,7 +2323,7 @@ int FGLshareGroup2::detIdShareEl (std::vector<int> ids2select, std::vector<int> 
     }
 
 
-    for (int i= 0; i < selectedIds.size(); i++)
+    for (size_t i= 0; i < selectedIds.size(); i++)
     {
         if (selectedIds[i] == maxIds)
         {
@@ -2340,7 +2340,7 @@ int FGLshareGroup2::detIdShareEl (std::vector<int> ids2select, std::vector<int> 
     { // we get here if there are multiple groups with same maximum # of cases but different sharing length
         std::vector<int> shareLength;
 
-        for (int i=0; i< maxIdsList.size(); i++)
+        for (size_t i=0; i< maxIdsList.size(); i++)
         {
             shareLength.push_back(shareReg2select[maxIdsList[i]]);
         }
@@ -2352,7 +2352,7 @@ int FGLshareGroup2::detIdShareEl (std::vector<int> ids2select, std::vector<int> 
         }
             
                 
-        for (int i=0; i< maxIdsList.size(); i++)
+        for (size_t i=0; i< maxIdsList.size(); i++)
         {
             if (shareReg2select[maxIdsList[i]] == maxLength2)
             {
@@ -2421,7 +2421,7 @@ void FGLshareGroup2::evalFGLshareLvF(int iter_num, std::map<int, std::vector<int
 
                     std::vector<int> temp1 = iter1->second;
 
-                    for (int i = 3; i < temp1.size(); i++)
+                    for (size_t i = 3; i < temp1.size(); i++)
                     {
                         map_key += std::to_string(temp1[i]);
                     }
@@ -2459,7 +2459,7 @@ void FGLshareGroup2::evalFGLshareLvF(int iter_num, std::map<int, std::vector<int
 
                         std::vector<int> temp1 = iter1->second;
                     
-                        for (int i = 3; i < temp1.size(); i++)
+                        for (size_t i = 3; i < temp1.size(); i++)
                         {
                             temp4.push_back(temp1[i]);
                         }
@@ -2485,7 +2485,7 @@ void FGLshareGroup2::evalFGLshareLvF(int iter_num, std::map<int, std::vector<int
             for (std::map<int, std::vector<int>>::iterator iter1 = sharingGrpsRgV2.begin(); iter1 != sharingGrpsRgV2.end(); iter1++)
             {
                 
-                for (int i = 0; i < keys2keep.size(); i++)
+                for (size_t i = 0; i < keys2keep.size(); i++)
                 {
                     if (keys2keep[i] == iter1->first)
                     {
@@ -2506,7 +2506,7 @@ void FGLshareGroup2::evalFGLshareLvF(int iter_num, std::map<int, std::vector<int
 
             for (std::map<int, std::vector<int>>::iterator iter1 = sharingGrpsRgV2.begin(); iter1 != sharingGrpsRgV2.end(); iter1++)
             {
-                for (int i = 0; i < keys2keep.size(); i++)
+                for (size_t i = 0; i < keys2keep.size(); i++)
                 {
                     if (keys2keep[i] == iter1->first)
                     {
@@ -2533,7 +2533,7 @@ void FGLshareGroup2::evalFGLshareLvF(int iter_num, std::map<int, std::vector<int
 
                     std::vector<int> temp1 = iter1->second;
 
-                    for (int i = 3; i < temp1.size(); i++)
+                    for (size_t i = 3; i < temp1.size(); i++)
                     {
                         map_key += std::to_string(temp1[i]);
                     }
@@ -2570,7 +2570,7 @@ void FGLshareGroup2::evalFGLshareLvF(int iter_num, std::map<int, std::vector<int
 
                         std::vector<int> temp1 = iter1->second;
                     
-                        for (int i = 3; i < temp1.size(); i++)
+                        for (size_t i = 3; i < temp1.size(); i++)
                         {
                             temp4.push_back(temp1[i]);
                         }
@@ -2608,7 +2608,7 @@ void FGLshareGroup2::evalFGLshareLvF(int iter_num, std::map<int, std::vector<int
 
                 std::vector<int> temp1 = iter1->second;
 
-                for (int i = 3; i < temp1.size(); i++)
+                for (size_t i = 3; i < temp1.size(); i++)
                 {
                     map_key += std::to_string(temp1[i]);
                 }
@@ -2641,7 +2641,7 @@ void FGLshareGroup2::evalFGLshareLvF(int iter_num, std::map<int, std::vector<int
 
                     std::vector<int> temp1 = iter1->second;
                    
-                    for (int i = 3; i < temp1.size(); i++)
+                    for (size_t i = 3; i < temp1.size(); i++)
                     {
                         temp4.push_back(temp1[i]);
                     }
@@ -2675,7 +2675,7 @@ std::vector<int> FGLshareGroup2::evalFGLshareLv3(std::map<std::string, std::vect
 
     std::vector<int> sizeEquilCl;
 
-    for (int i = 0; i < equilClasses.size(); i++)
+    for (size_t i = 0; i < equilClasses.size(); i++)
     {
         sizeEquilCl.push_back(equilClasses[i].size());
     }
@@ -2686,7 +2686,7 @@ std::vector<int> FGLshareGroup2::evalFGLshareLv3(std::map<std::string, std::vect
         maxNumIter = *max_element(sizeEquilCl.begin(), sizeEquilCl.end());
     }
 
-    for (int i = 0; i < equilClasses.size(); i++)
+    for (size_t i = 0; i < equilClasses.size(); i++)
     {
 
         if (equilClasses[i].size() == maxNumIter)
@@ -2707,7 +2707,7 @@ std::vector<int> FGLshareGroup2::evalFGLshareLv3(std::map<std::string, std::vect
         {
             result1.push_back(iter_use);
            
-            for (int j = 1; j < inVect.size(); j++)
+            for (size_t j = 1; j < inVect.size(); j++)
             {
                 result1.push_back(inVect[j]);
             }
@@ -2793,7 +2793,7 @@ void MatrixHaplo::setHeader()
     std::string last = std::to_string(cur_window_bps->back());
     std::string window_range = chr + ":" + first + "-" + last;
 
-    for (int i = 0; i < ped1->cur_ped.size(); i++)
+    for (size_t i = 0; i < ped1->cur_ped.size(); i++)
     {
 
         if (ped1->cur_ped[i].wgs_data == 1)
@@ -2828,9 +2828,9 @@ void MatrixHaplo::printOutResult(ofstream *haploStream2)
 
     setHeader();
 
-    for (int i = 0; i < storage.size(); i++)
+    for (size_t i = 0; i < storage.size(); i++)
     {
-        for (int j = 0; j < storage[i].size(); j++)
+        for (size_t j = 0; j < storage[i].size(); j++)
         {
 
             *haploStream2 << storage[i][j] << " ";
@@ -2995,7 +2995,7 @@ int Phase2::assignHomGenoToFGL()
 
     int check1 = 0; // to check if we have at least one homozygous genotype
 
-    for (int i = 0; i < ped1->cur_ped.size(); i++)
+    for (size_t i = 0; i < ped1->cur_ped.size(); i++)
     {
 
         if (ped1->cur_ped[i].wgs_data == 1)
@@ -3031,14 +3031,14 @@ int Phase2::assignHomGenoToFGL()
 int Phase2::checkFGLGenoConsistency()
 {
 
-    for (int it1 = 0; it1 < phased_geno.size(); it1++)
+    for (size_t it1 = 0; it1 < phased_geno.size(); it1++)
     {
 
         if (phased_geno[it1].size() > 1)
         {
             std::string al1 = phased_geno[it1][0];
 
-            for (int it2 = 1; it2 < phased_geno[it1].size(); it2++)
+            for (size_t it2 = 1; it2 < phased_geno[it1].size(); it2++)
             {
 
                 if (phased_geno[it1][it2].compare(al1) == 0)
@@ -3060,7 +3060,7 @@ int Phase2::checkFGLGenoConsistency()
 int Phase2::resolveHets()
 {
 
-    for (int i = 0; i < ped1->cur_ped.size(); i++)
+    for (size_t i = 0; i < ped1->cur_ped.size(); i++)
     {
 
         if (ped1->cur_ped[i].wgs_data == 1)
@@ -3125,7 +3125,7 @@ int Phase2::countResolvedFGL()
 
     int resolved_fgl = 0;
 
-    for (int it1 = 0; it1 < phased_geno.size(); it1++)
+    for (size_t it1 = 0; it1 < phased_geno.size(); it1++)
     {
 
         if (phased_geno[it1].size() > 0)
@@ -3144,7 +3144,7 @@ void Phase2::assignHomGenos2Chrs()
     phased_geno.clear(); 
     this->initializePhasedGeno(); 
 
-    for (int i = 0; i < ped1->cur_ped.size(); i++)
+    for (size_t i = 0; i < ped1->cur_ped.size(); i++)
     {
 
         if (ped1->cur_ped[i].wgs_data == 1)
@@ -3177,7 +3177,7 @@ void Phase2::assignHomGenos2Chrs()
 void Phase2::sendPhasedGenoToHaploMatrix()
 { 
 
-    for (int i = 0; i < ped1->cur_ped.size(); i++)
+    for (size_t i = 0; i < ped1->cur_ped.size(); i++)
     {
 
         if (ped1->cur_ped[i].wgs_data == 1)
@@ -3263,7 +3263,7 @@ void Phase2::sendPhasedGenoToHaploMatrix()
 void Phase2::sendPhasedGenoToHaploMatrix2()
 { 
 
-    for (int i = 0; i < ped1->cur_ped.size(); i++)
+    for (size_t i = 0; i < ped1->cur_ped.size(); i++)
     {
 
         if (ped1->cur_ped[i].wgs_data == 1)
@@ -3400,9 +3400,9 @@ void IntegrationHpSh::setValue(int cur_wind, std::vector<std::vector<int>> &shar
      * 7 = shared chr, others (not from core set);
      * 8 = ambig shared chr with double sharing, others;
      */
-    for (int k = 0; k < shared_chr_3D.size(); k++) 
+    for (size_t k = 0; k < shared_chr_3D.size(); k++) 
     {
-        for (int j = 0; j < shared_chr_3D[k].size(); j++)
+        for (size_t j = 0; j < shared_chr_3D[k].size(); j++)
         {
 
             matrixHpShareAll[cur_wind - 1][shared_chr_3D[k][j]] = k + 1;
@@ -3414,7 +3414,7 @@ void IntegrationHpSh::setValue(int cur_wind, std::vector<std::vector<int>> &shar
 void IntegrationHpSh::setValue2(int cur_wind, std::vector<int> &candidate_grp3Dchrs)
 {
 
-    for (int k = 0; k < candidate_grp3Dchrs.size(); k++) 
+    for (size_t k = 0; k < candidate_grp3Dchrs.size(); k++) 
     {
 
         if (matrixHpShareAll[cur_wind - 1][candidate_grp3Dchrs[k]] == -1)
@@ -3434,7 +3434,7 @@ void IntegrationHpSh::setValue2(int cur_wind, std::vector<int> &candidate_grp3Dc
 void IntegrationHpSh::setValue3(int cur_wind, std::vector<int> &others3Dchrs)
 {
 
-    for (int k = 0; k < others3Dchrs.size(); k++) 
+    for (size_t k = 0; k < others3Dchrs.size(); k++) 
     {
 
         if (matrixHpShareAll[cur_wind - 1][others3Dchrs[k]] == -1)
@@ -3520,7 +3520,7 @@ std::vector<int> IntegrationHpSh::resolveDoubleHaploSharing()
     wind2examine = dense_m_pos->getROIboundWindNum(linkage_boundaries);
 
 
-    for (int i = 0; i < candidate_grp.size(); i++)
+    for (size_t i = 0; i < candidate_grp.size(); i++)
     {
        
         int m_chr_count = 0;
@@ -3570,10 +3570,10 @@ std::vector<int> IntegrationHpSh::resolveDoubleHaploSharing()
         int count_5_6 = 0;
 
 
-        for (int i = 0; i < subjectsWithSharedHaplo.size(); i++)
+        for (size_t i = 0; i < subjectsWithSharedHaplo.size(); i++)
         {
 
-            for (int j = 0; j < subjectsWithSharedHaplo[i].size(); j++)
+            for (size_t j = 0; j < subjectsWithSharedHaplo[i].size(); j++)
             {
 
                 std::vector<int> subjectHaploshare =  this->readHaploShareData(k, subjectsWithSharedHaplo[i][j]);
@@ -3626,10 +3626,10 @@ void IntegrationHpSh::updateShareHaploSeq(std::vector<int> &change2secondHpShare
 
     std::map<std::string, int> windowIndex; // window# - 1
 
-    for (int k = 0; k < change2secondHpShare.size(); k++)
+    for (size_t k = 0; k < change2secondHpShare.size(); k++)
     {
 
-        for (int j = 0; j < second_shared_haplo.size(); j++)
+        for (size_t j = 0; j < second_shared_haplo.size(); j++)
         {
 
             if (change2secondHpShare[k] - 1 == std::stoi(second_shared_haplo[j][0][0])) // window# - 1
@@ -3672,7 +3672,7 @@ void IntegrationHpSh::updateShareHaploSeq(std::vector<int> &change2secondHpShare
 
                 std::string tempHaploSeq;
 
-                for (int g = 0; g < second_shared_haplo[index][2].size(); g++)
+                for (size_t g = 0; g < second_shared_haplo[index][2].size(); g++)
                 {
                     tempHaploSeq.append(second_shared_haplo[index][2][g]);
                 }
@@ -3700,7 +3700,7 @@ void IntegrationHpSh::printFileHeader()
     for (int k = 0; k < num_chrs; k++)
     {
 
-        for (int i = 0; i < ped1->cur_ped.size(); i++)
+        for (size_t i = 0; i < ped1->cur_ped.size(); i++)
         {
 
             if (ped1->cur_ped[i].mat_3D_pos == k ||
@@ -3913,7 +3913,7 @@ HaploShare::~HaploShare()
 void HaploShare::setHaploData(int chr_num_3D, const std::vector<int> &haplo_seq)
 {
 
-    for (int k = 0; k < haplo_seq.size(); k++)
+    for (size_t k = 0; k < haplo_seq.size(); k++)
     {
         matrixHaploData[chr_num_3D][k] = haplo_seq[k];
     }
@@ -4100,10 +4100,10 @@ std::vector<std::vector<std::string>> HaploShare::convert3DChr2Sub(std::vector<i
     std::vector<std::string> temp1;
     std::vector<std::string> temp2;
 
-    for (int k = 0; k < chr_num_3D.size(); k++)
+    for (size_t k = 0; k < chr_num_3D.size(); k++)
     {
 
-        for (int i = 0; i < ped1->cur_ped.size(); i++)
+        for (size_t i = 0; i < ped1->cur_ped.size(); i++)
         {
 
             if (ped1->cur_ped[i].mat_3D_pos == chr_num_3D[k] ||
@@ -4291,12 +4291,12 @@ void HaploShare::search4HaploShare(int route_num)
     Combinations colcombs(&colnum4comb);
     std::vector<std::vector<int>> *colcombs2test = colcombs.getAllCombs();
 
-    for (int i = 0; i < colcombs2test->size(); i++)
+    for (size_t i = 0; i < colcombs2test->size(); i++)
     {
 
         std::vector<int> temp_col4comb;
 
-        for (int j = 0; j < (*colcombs2test)[i].size(); j++)
+        for (size_t j = 0; j < (*colcombs2test)[i].size(); j++)
         {
             temp_col4comb.push_back((*colcombs2test)[i][j]);
         }
@@ -4378,9 +4378,9 @@ void HaploShare::checkCandidateGrpMatch(std::vector<int> &rowNums4SharedHaplo, s
 {
     std::vector<std::string> ids2check;
 
-    for (int i = 0; i < rowNums4SharedHaplo.size(); i++)
+    for (size_t i = 0; i < rowNums4SharedHaplo.size(); i++)
     {
-        for (int j = 0; j < aoa_ids[rowNums4SharedHaplo[i]].size(); j++)
+        for (size_t j = 0; j < aoa_ids[rowNums4SharedHaplo[i]].size(); j++)
         {  
             ids2check.push_back(aoa_ids[rowNums4SharedHaplo[i]][j]); // getting ids for specified row numbers from AOA1 matrix
         }
@@ -4402,14 +4402,14 @@ void HaploShare::checkCandidateGrpMatch(std::vector<int> &rowNums4SharedHaplo, s
 
             std::vector<int> suggestedAls;
 
-            for (int i = 0; i < geno_consist4share[1].size(); i++)
+            for (size_t i = 0; i < geno_consist4share[1].size(); i++)
             {
                 suggestedAls.push_back(geno_consist4share[1][i]);
             }
 
             std::vector<int> subContribOnly1Chr;
 
-            for (int i = 0; i < geno_consist4share[2].size(); i++)
+            for (size_t i = 0; i < geno_consist4share[2].size(); i++)
             {
                 subContribOnly1Chr.push_back(geno_consist4share[2][i]);
             }
@@ -4432,7 +4432,7 @@ std::vector<std::vector<int>> HaploShare::checkGeno4ProposedAl(std::vector<int> 
 
     std::vector<int> varPos2varify = this->getVarPos2VarifyAOA1(rowNums4SharedHaplo);
 
-    for (int k = 0; k < varPos2varify.size(); k++)
+    for (size_t k = 0; k < varPos2varify.size(); k++)
     {
 
         if (varPos2varify[k] != -1)
@@ -4441,7 +4441,7 @@ std::vector<std::vector<int>> HaploShare::checkGeno4ProposedAl(std::vector<int> 
             if (varPos2varify[k] == 1)
             {
 
-                for (int h = 0; h < candidate_grp.size(); h++)
+                for (size_t h = 0; h < candidate_grp.size(); h++)
                 {
                     // no single 2/2 genotype for ind from candidate group
                     // all 1/1 genotype for ind from candidate group with two chrs contributed to shared haplotype
@@ -4469,7 +4469,7 @@ std::vector<std::vector<int>> HaploShare::checkGeno4ProposedAl(std::vector<int> 
             else if (varPos2varify[k] == 2)
             {
 
-                for (int h = 0; h < candidate_grp.size(); h++)
+                for (size_t h = 0; h < candidate_grp.size(); h++)
                 {
 
                     // no single 1/1 genotype for ind from candidate group
@@ -4502,7 +4502,7 @@ std::vector<std::vector<int>> HaploShare::checkGeno4ProposedAl(std::vector<int> 
                 int count_ones_hm = 0;
                 int count_twos_hm = 0;
 
-                for (int h = 0; h < candidate_grp.size(); h++)
+                for (size_t h = 0; h < candidate_grp.size(); h++)
                 {
 
                     int num_chrs_shared = this->getNumChrsShared(candidate_grp[h]); // if 1 = two chrs; -1 = nothing
@@ -4583,7 +4583,7 @@ std::vector<int> HaploShare::getVarPos2VarifyAOA1(std::vector<int> &rowNums4Shar
         int count_ones = 0;
         int count_twos = 0;
 
-        for (int i = 0; i < rowNums4SharedHaplo.size(); i++)
+        for (size_t i = 0; i < rowNums4SharedHaplo.size(); i++)
         {
 
             if (matrixAOA1[rowNums4SharedHaplo[i]][j] == 0)
@@ -4637,10 +4637,10 @@ int HaploShare::getNumChrsShared(std::string &sub_id)
 
     int result = -1;
 
-    for (int i = 0; i < aoa_2chrs.size(); i++)
+    for (size_t i = 0; i < aoa_2chrs.size(); i++)
     {
 
-        for (int j = 0; j < aoa_2chrs[i].size(); j++)
+        for (size_t j = 0; j < aoa_2chrs[i].size(); j++)
         {
 
             if (sub_id.compare(aoa_2chrs[i][j]) == 0)
@@ -4730,7 +4730,7 @@ std::vector<int> HaploShare::getColNumComb(int route_num)
 void HaploShare::testColSubstAOA(int route_num, std::vector<int> &comb2test)
 {
 
-    for (int j = 0; j < comb2test.size(); j++)
+    for (size_t j = 0; j < comb2test.size(); j++)
     {
         for (int i = 0; i < num_rows_aoa; i++)
         {
@@ -4758,7 +4758,7 @@ void HaploShare::testColSubstAOA(int route_num, std::vector<int> &comb2test)
     // End of substitution evaluation
 
     // resetting Temp1 matrix used to test column substitutions
-    for (int j = 0; j < comb2test.size(); j++)
+    for (size_t j = 0; j < comb2test.size(); j++)
     {
         for (int i = 0; i < num_rows_aoa; i++)
         {
@@ -4800,13 +4800,13 @@ std::vector<int> HaploShare::selectCurHaploSharesStep1() // execute only if cur_
     std::vector<int> all_m_ones; // all -1
     std::vector<int> all_zeros;
 
-    for (int i = 0; i < cur_sharing.size(); i++)
+    for (size_t i = 0; i < cur_sharing.size(); i++)
     {
 
         int count_m_ones = 0;
         int count_zeros = 0;
 
-        for (int k = 0; k < cur_sharing[i][2].size(); k++)
+        for (size_t k = 0; k < cur_sharing[i][2].size(); k++)
         {
 
             if (cur_sharing[i][2][k] == -1)
@@ -4832,7 +4832,7 @@ std::vector<int> HaploShare::selectCurHaploSharesStep1() // execute only if cur_
     {
         max_m_ones = *std::max_element(all_m_ones.begin(), all_m_ones.end());
 
-        for (int i = 0; i < all_m_ones.size(); i++)
+        for (size_t i = 0; i < all_m_ones.size(); i++)
         {
             if (all_m_ones[i] == max_m_ones)
             {
@@ -4849,7 +4849,7 @@ std::vector<int> HaploShare::selectCurHaploSharesStep1() // execute only if cur_
     {
         min_zeros = *std::min_element(zeros_4_max_m_ones.begin(), zeros_4_max_m_ones.end());
 
-        for (int i = 0; i < max_m_ones_els.size(); i++)
+        for (size_t i = 0; i < max_m_ones_els.size(); i++)
         {
             if (all_zeros[max_m_ones_els[i]] == min_zeros)
             {
@@ -4868,19 +4868,19 @@ std::vector<int> HaploShare::selectCurHaploSharesStep2(std::vector<int> &els_4_s
     std::vector<std::vector<int>> rows2test;
 
     std::vector<int> temp1;
-    for (int i = 0; i < cur_sharing[els_4_step2[0]][1].size(); i++)
+    for (size_t i = 0; i < cur_sharing[els_4_step2[0]][1].size(); i++)
     {
         temp1.push_back(cur_sharing[els_4_step2[0]][1][i]);
     }
     rows2test.push_back(temp1);
     els_4_step3.push_back(els_4_step2[0]);
 
-    for (int i = 0; i < els_4_step2.size(); i++)
+    for (size_t i = 0; i < els_4_step2.size(); i++)
     {
 
         std::vector<int> temp2;
 
-        for (int j = 0; j < cur_sharing[els_4_step2[i]][1].size(); j++)
+        for (size_t j = 0; j < cur_sharing[els_4_step2[i]][1].size(); j++)
         {
             temp2.push_back(cur_sharing[els_4_step2[i]][1][j]);
         }
@@ -4891,7 +4891,7 @@ std::vector<int> HaploShare::selectCurHaploSharesStep2(std::vector<int> &els_4_s
         {
             std::vector<int> temp3;
 
-            for (int h = 0; h < rows2test[k].size(); h++)
+            for (size_t h = 0; h < rows2test[k].size(); h++)
             {
                 temp3.push_back(rows2test[k][h]);
             }
@@ -4923,22 +4923,22 @@ std::vector<int> HaploShare::selectCurHaploSharesStep3(std::vector<int> &els_4_s
     std::vector<int> numOthersSharing;
     std::vector<int> numOthersSharing_el;
 
-    for (int i = 0; i < els_4_step3.size(); i++)
+    for (size_t i = 0; i < els_4_step3.size(); i++)
     {
 
         std::vector<int> rowNums4SharedHaplo;
 
-        for (int k = 0; k < cur_sharing[els_4_step3[i]][1].size(); k++)
+        for (size_t k = 0; k < cur_sharing[els_4_step3[i]][1].size(); k++)
         {
             rowNums4SharedHaplo.push_back(cur_sharing[els_4_step3[i]][1][k]);
         }
 
         std::vector<std::string> all_ids_contrib2ShHp;
 
-        for (int h = 0; h < rowNums4SharedHaplo.size(); h++)
+        for (size_t h = 0; h < rowNums4SharedHaplo.size(); h++)
         {
 
-            for (int f = 0; f < aoa_ids[rowNums4SharedHaplo[h]].size(); f++)
+            for (size_t f = 0; f < aoa_ids[rowNums4SharedHaplo[h]].size(); f++)
             {
                 all_ids_contrib2ShHp.push_back(aoa_ids[rowNums4SharedHaplo[h]][f]);
             }
@@ -4967,14 +4967,14 @@ std::vector<int> HaploShare::selectCurHaploSharesStep3(std::vector<int> &els_4_s
                 numOthersSharing_el.push_back(i);
 
                 std::vector<int> sharingIdsOut;
-                for (int h = 0; h < extraIdsShareConf[0].size(); h++)
+                for (size_t h = 0; h < extraIdsShareConf[0].size(); h++)
                 {
                     sharingIdsOut.push_back(extraIdsShareConf[0][h]);
                 }
                 cur_sharing[els_4_step3[i]][4].insert(cur_sharing[els_4_step3[i]][4].end(), sharingIdsOut.begin(), sharingIdsOut.end());
 
                 std::vector<int> idsContrib1Chr;
-                for (int h = 0; h < extraIdsShareConf[1].size(); h++)
+                for (size_t h = 0; h < extraIdsShareConf[1].size(); h++)
                 {
                     idsContrib1Chr.push_back(extraIdsShareConf[1][h]);
                 }
@@ -4990,7 +4990,7 @@ std::vector<int> HaploShare::selectCurHaploSharesStep3(std::vector<int> &els_4_s
     {
         maxOthersShare = *std::max_element(numOthersSharing.begin(), numOthersSharing.end());
 
-        for (int i = 0; i < numOthersSharing.size(); i++)
+        for (size_t i = 0; i < numOthersSharing.size(); i++)
         {
             if (numOthersSharing[i] == maxOthersShare)
             {
@@ -5017,12 +5017,12 @@ std::vector<std::vector<int>> HaploShare::checkGeno4ProposedAlOthers(std::vector
     std::vector<int> subContribOnly1Chr; // stores subject index of those who contribute only one chr to shared haplotype
 
     std::vector<int> SharedHaploAls;
-    for (int k = 0; k < cur_sharing[curShareInst][2].size(); k++)
+    for (size_t k = 0; k < cur_sharing[curShareInst][2].size(); k++)
     {
         SharedHaploAls.push_back(cur_sharing[curShareInst][2][k]);
     }
 
-    for (int k = 0; k < SharedHaploAls.size(); k++)
+    for (size_t k = 0; k < SharedHaploAls.size(); k++)
     {
 
         if (SharedHaploAls[k] != -1)
@@ -5032,7 +5032,7 @@ std::vector<std::vector<int>> HaploShare::checkGeno4ProposedAlOthers(std::vector
             {
                 std::vector<int> el2remove;
 
-                for (int h = 0; h < othersWhoShare.size(); h++)
+                for (size_t h = 0; h < othersWhoShare.size(); h++)
                 {
                     // no single 2/2 genotype for ind from others group
                     // all 1/1 genotype for ind from others group with two chrs contributed to shared haplotype
@@ -5074,7 +5074,7 @@ std::vector<std::vector<int>> HaploShare::checkGeno4ProposedAlOthers(std::vector
                 
                 std::vector<int> el2remove;
 
-                for (int h = 0; h < othersWhoShare.size(); h++)
+                for (size_t h = 0; h < othersWhoShare.size(); h++)
                 {
 
                     // no single 1/1 genotype for ind from others group
@@ -5116,7 +5116,7 @@ std::vector<std::vector<int>> HaploShare::checkGeno4ProposedAlOthers(std::vector
             else if (SharedHaploAls[k] == 0) // case when variant has Zeros on haplotypes among all sharing Subjs
             {
 
-                for (int h = 0; h < othersWhoShare.size(); h++)
+                for (size_t h = 0; h < othersWhoShare.size(); h++)
                 {
 
                     int num_chrs_shared = this->getNumChrsShared(othersWhoShare[h]); // if 1 = two chrs; -1 = nothing
@@ -5140,7 +5140,7 @@ std::vector<std::vector<int>> HaploShare::checkGeno4ProposedAlOthers(std::vector
     {
 
         std::vector<int> temp1;
-        for (int g = 0; g < othersWhoShare.size(); g++)
+        for (size_t g = 0; g < othersWhoShare.size(); g++)
         {
             int temp2 = ped1->getSubjectIndex(othersWhoShare[g]);
             temp1.push_back(temp2);
@@ -5182,26 +5182,26 @@ void HaploShare::selectCurHaploSharesStep4(std::vector<int> &els_4_step4)
     std::vector<std::vector<int>> result1(4);
 
     std::vector<int> sharedHaploRows;
-    for (int i = 0; i < cur_sharing[el_4_step4][1].size(); i++)
+    for (size_t i = 0; i < cur_sharing[el_4_step4][1].size(); i++)
     {
         sharedHaploRows.push_back(cur_sharing[el_4_step4][1][i]);
     }
 
     std::vector<int> shared_chr_3D;
-    for (int i = 0; i < sharedHaploRows.size(); i++)
+    for (size_t i = 0; i < sharedHaploRows.size(); i++)
     {
 
-        for (int g = 0; g < aoa_chrs[sharedHaploRows[i]].size(); g++)
+        for (size_t g = 0; g < aoa_chrs[sharedHaploRows[i]].size(); g++)
         {
             shared_chr_3D.push_back(aoa_chrs[sharedHaploRows[i]][g]);
         }
     }
 
     std::vector<int> shared_chr_3D_CandGrp;
-    for (int i = 0; i < candidate_grp.size(); i++)
+    for (size_t i = 0; i < candidate_grp.size(); i++)
     {
 
-        for (int j = 0; j < shared_chr_3D.size(); j++)
+        for (size_t j = 0; j < shared_chr_3D.size(); j++)
         {
 
             if (shared_chr_3D[j] == ped1->cur_ped[ped1->getSubjectIndex(candidate_grp[i])].mat_3D_pos)
@@ -5227,17 +5227,17 @@ void HaploShare::selectCurHaploSharesStep4(std::vector<int> &els_4_step4)
         if (!cur_sharing[el_4_step4][4].empty())
         {
 
-            for (int i = 0; i < cur_sharing[el_4_step4][4].size(); i++)
+            for (size_t i = 0; i < cur_sharing[el_4_step4][4].size(); i++)
             {
 
                 others.push_back(cur_sharing[el_4_step4][4][i]);
             }
         }
 
-        for (int i = 0; i < others.size(); i++)
+        for (size_t i = 0; i < others.size(); i++)
         {
 
-            for (int j = 0; j < shared_chr_3D.size(); j++)
+            for (size_t j = 0; j < shared_chr_3D.size(); j++)
             {
 
                 if (shared_chr_3D[j] == ped1->cur_ped[others[i]].mat_3D_pos)
@@ -5258,7 +5258,7 @@ void HaploShare::selectCurHaploSharesStep4(std::vector<int> &els_4_step4)
     if (!cur_sharing[el_4_step4][3].empty())
     {
 
-        for (int i = 0; i < cur_sharing[el_4_step4][3].size(); i++)
+        for (size_t i = 0; i < cur_sharing[el_4_step4][3].size(); i++)
         {
             chr3D4contribOnly1ChrCandGrp.push_back(ped1->cur_ped[cur_sharing[el_4_step4][3][i]].mat_3D_pos);
             chr3D4contribOnly1ChrCandGrp.push_back(ped1->cur_ped[cur_sharing[el_4_step4][3][i]].pat_3D_pos);
@@ -5273,7 +5273,7 @@ void HaploShare::selectCurHaploSharesStep4(std::vector<int> &els_4_step4)
         if (!cur_sharing[el_4_step4][5].empty())
         {
 
-            for (int i = 0; i < cur_sharing[el_4_step4][5].size(); i++)
+            for (size_t i = 0; i < cur_sharing[el_4_step4][5].size(); i++)
             {
                 chr3D4contribOnly1ChrOthers.push_back(ped1->cur_ped[cur_sharing[el_4_step4][5][i]].mat_3D_pos);
                 chr3D4contribOnly1ChrOthers.push_back(ped1->cur_ped[cur_sharing[el_4_step4][5][i]].pat_3D_pos);
@@ -5290,12 +5290,12 @@ void HaploShare::selectCurHaploSharesStep4(std::vector<int> &els_4_step4)
     global_hp_share->setValue(cur_wind, result1);
 
     std::vector<int> sharedHaploTemplate;
-    for (int i = 0; i < cur_sharing[el_4_step4][2].size(); i++)
+    for (size_t i = 0; i < cur_sharing[el_4_step4][2].size(); i++)
     {
         sharedHaploTemplate.push_back(cur_sharing[el_4_step4][2][i]);
     }
 
-    for (int j = 0; j < sharedHaploTemplate.size(); j++)
+    for (size_t j = 0; j < sharedHaploTemplate.size(); j++)
     {
         if (sharedHaploTemplate[j] == -1)
         {
@@ -5310,7 +5310,7 @@ void HaploShare::selectCurHaploSharesStep4(std::vector<int> &els_4_step4)
     }
 
     *sharedHaploStream << chr << ":" << (*cur_window_bps)[0] << "-" << (*cur_window_bps)[cur_window_bps->size() - 1] << " ";
-    for (int j = 0; j < sharedHaploOut.size(); j++)
+    for (size_t j = 0; j < sharedHaploOut.size(); j++)
     {
         *sharedHaploStream << sharedHaploOut[j];
     }
@@ -5340,7 +5340,7 @@ int HaploShare::check2ndSharedHaploPossibility()
         int count_miss1and2 = 0;
         int count_miss2 = 0;
 
-        for (int h = 0; h < candidate_grp.size(); h++)
+        for (size_t h = 0; h < candidate_grp.size(); h++)
         {
 
             std::vector<std::string> cur_sub_geno = dense_genotypes->getGeno((*cur_window_bps)[k], ped1->getSubjectIndex(candidate_grp[h]));
@@ -5432,7 +5432,7 @@ void HaploShare::determine2ndSharedHaploSeq()
         int count_miss1and2 = 0;
         int count_miss2 = 0;
 
-        for (int h = 0; h < candidate_grp.size(); h++)
+        for (size_t h = 0; h < candidate_grp.size(); h++)
         {
 
             std::vector<std::string> cur_sub_geno = dense_genotypes->getGeno((*cur_window_bps)[k], ped1->getSubjectIndex(candidate_grp[h]));
@@ -5566,7 +5566,7 @@ std::vector<int> HaploShare::get3Dchrs4candidate_grp()
 
     std::vector<int> result;
 
-    for (int i = 0; i < candidate_grp.size(); i++)
+    for (size_t i = 0; i < candidate_grp.size(); i++)
     {
 
         result.push_back (ped1->cur_ped[ped1->getSubjectIndex(candidate_grp[i])].mat_3D_pos);
@@ -5588,7 +5588,7 @@ std::vector<int> HaploShare::determineOthersWhoShare2ndHaplo(std::vector<int> &s
 
     std::vector<std::string> wgsDataSubjects;
 
-    for (int i = 0; i < ped1->cur_ped.size(); ++i)
+    for (size_t i = 0; i < ped1->cur_ped.size(); ++i)
     {
         if (ped1->cur_ped[i].wgs_data == 1)
         {
@@ -5599,7 +5599,7 @@ std::vector<int> HaploShare::determineOthersWhoShare2ndHaplo(std::vector<int> &s
     Comp_arrays_venn<string> mytest(&candidate_grp, &wgsDataSubjects);
     std::vector<std::string> wgsDataSubOthers = mytest.getDifference();
 
-    for (int i = 0; i < wgsDataSubOthers.size(); ++i)
+    for (size_t i = 0; i < wgsDataSubOthers.size(); ++i)
     {
 
         int curSubInd = ped1->getSubjectIndex(wgsDataSubOthers[i]);
@@ -5609,7 +5609,7 @@ std::vector<int> HaploShare::determineOthersWhoShare2ndHaplo(std::vector<int> &s
 
         int success_count = 0;
 
-        if (hp_share_status[0] = 3)
+        if (hp_share_status[0] == 3)
         {
             goto LB1;
         }
@@ -5657,7 +5657,7 @@ std::vector<int> HaploShare::determineOthersWhoShare2ndHaplo(std::vector<int> &s
 
         int success_count2 = 0;
 
-        if (hp_share_status[1] = 3)
+        if (hp_share_status[1] == 3)
         {
             goto LB2;
         }
@@ -5716,7 +5716,7 @@ std::vector<int> HaploShare::detectAmbigSharedHaplosPresence()
     std::vector<int> chrs3D4SecondSharedHp;
     int count1 = 0;
 
-    for (int i = 0; i < candidate_grp.size(); i++)
+    for (size_t i = 0; i < candidate_grp.size(); i++)
     {
         
         std::vector<int> share4CurSub = global_hp_share->readHaploShareData(cur_wind, candidate_grp[i]);
@@ -5772,7 +5772,7 @@ void HaploShare::evalAmbigSharedHaplosPresence(std::vector<int> &chrs3D4SecondSh
         int count_1 = 0;
         int count_2 = 0;
         
-        for (int i = 0; i < chrs3D4SecondSharedHp.size(); i++)
+        for (size_t i = 0; i < chrs3D4SecondSharedHp.size(); i++)
         {
 
             if (matrixHaploData[chrs3D4SecondSharedHp[i]][j] == 0)
@@ -6421,7 +6421,7 @@ next_step1:
 
                 temp4 = split(temp3[0], ':'); // temp4[1] = bp position
 
-                for (int i = 1; i < temp3.size(); i += 2)
+                for (size_t i = 1; i < temp3.size(); i += 2)
                 {
                     std::vector<std::string> temp5;
                     temp5.push_back(temp3[i]);
@@ -6593,7 +6593,7 @@ Pedigree_info *current_ped_ptr, HaploShare &wind_haplos)
 
                         std::string chr_haplo(token3);
 
-                        for (int i = 0; i < chr_haplo.length(); ++i)
+                        for (size_t i = 0; i < chr_haplo.length(); ++i)
                         {
 
                             int haplo_al = (int)chr_haplo[i] - 48;
@@ -6668,7 +6668,7 @@ void readCadidateGroup(Parameters &current_pars, Pedigree_info *current_ped_ptr)
 void printCandidateGrp(ofstream *fgl_share_grp2, std::vector<int> &result1, Pedigree_info &current_ped)
 {
 
-    for (int i = 1; i < result1.size(); i++) // el[0] = inter #
+    for (size_t i = 1; i < result1.size(); i++) // el[0] = inter #
     {
         std::string subject_id_orig = current_ped.convert2OrigID(std::to_string(result1[i]));
         *fgl_share_grp2 << subject_id_orig << " "; 
