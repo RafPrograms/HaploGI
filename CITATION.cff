@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: >
+  If you use this software, please cite it using the metadata below. 
+  Also consider citing our paper, listed in the README.
+
+title: "HaploGI - Haplotyping Given Inheritance"
+version: "1.0.0"
+doi: will be added upon publishing
+date-released: 2025-07-08
+
+authors:
+  - family-names: Nafikov
+    given-names: Rafael A.
+    orcid: https://orcid.org/0000-0001-7288-0981
+
+license: GPL-3.0-only
+repository-code: https://github.com/yourusername/HaploGI
+url: https://github.com/yourusername/HaploGI
+abstract: >
+  HaploGI (Haplotyping Given Inheritance) is a software package developed for 
+  pedigree-based haplotyping of whole-genome sequencing (WGS) data and determination 
+  of haplotype sharing between subjects. It aims to identify risk haplotypes within 
+  linkage regions and disease-associated variants carried on those haplotypes. 
+  This version (v1.0.0) is associated with our 2025 presubmission to the journal 
+  Genetic Epidemiology (Nafikov et al., 2025).
