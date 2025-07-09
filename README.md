@@ -1,7 +1,7 @@
 # HaploGI – Haplotyping Given Inheritance
 
 **Pedigree-Based Haplotyping**\
-**Version 1.0.25**
+**Version 1.0.0**
 
 ------------------------------------------------------------------------
 
