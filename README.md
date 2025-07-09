@@ -28,7 +28,7 @@ University of Washington
 
 ------------------------------------------------------------------------
 
-## Introduction {#introduction}
+## Introduction
 
 **HaploGI** (Haplotyping Given Inheritance) performs **pedigree-based haplotyping** of Whole Genome Sequencing (WGS) data and determines haplotype sharing between subjects from a specified group of cases.
 
@@ -68,7 +68,7 @@ On GitHub, click the **“Cite this repository”** button near the top to get c
 
 ------------------------------------------------------------------------
 
-## License {#license}
+## License
 
 HaploGI is a C++ program released under the **GNU General Public License v3.0**.\
 See the full license at <https://www.gnu.org/licenses/>.
@@ -77,7 +77,7 @@ See the full license at <https://www.gnu.org/licenses/>.
 
 ------------------------------------------------------------------------
 
-## Software URL {#software-url}
+## Software URL
 
 HaploGI source code is available at:\
 👉 <https://github.com/RafPrograms/HaploGI/tree/main/src>
@@ -87,21 +87,21 @@ HaploGI documentation and a parameter file template to run the program are avail
 
 ------------------------------------------------------------------------
 
-## Data Example {#data-example}
+## Data Example
 
 Downloadable ZIP with example input/output for each run option is available at:\
 👉 <https://github.com/RafPrograms/HaploGI/tree/main/data_example>
 
 ------------------------------------------------------------------------
 
-## HaploGI Utility Scripts {#haplogi-utility-scripts}
+## HaploGI Utility Scripts
 
 A number of Python utility scripts are available to assist with preparing HaploGI input files, processing output data, and visualizing results, at:\
 👉 <https://github.com/RafPrograms/HaploGI/tree/main/HaploGI_utility_scripts>
 
 ------------------------------------------------------------------------
 
-## Support {#support}
+## Support
 
 For questions, bug reports, or suggestions, please contact:\
 📧 [nrafscience\@gmail.com](mailto:nrafscience@gmail.com)\
