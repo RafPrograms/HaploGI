@@ -19,7 +19,7 @@ University of Washington
 
 - [Introduction](#introduction)
 - [Paper Citation](#paper-citation)
-- [Software DOI](#software-doi)
+- [Software Citation](#software-doi)
 - [License](#license)
 - [Software URL](#software-url)
 - [Data Example](#data-example)
@@ -34,12 +34,33 @@ University of Washington
 
 ---
 
-## Paper Citation
+## 📚 Paper Citation
 
 If you use **HaploGI** in your work, please cite:
 
 Nafikov, R. A., Sohi, H., Nato Jr, A. Q., Horimoto, A. R., Bird, T. D., DeStefano, A., Blue, E. E., & Wijsman, E. M.  
 *Variant prioritization by pedigree-based haplotyping*. Submitted for publication to *Genetic Epidemiology*, 2025.
+
+---
+
+## 📚 Software Citation
+
+If you use **HaploGI** in your research, please also cite the following:
+
+### 📦 Software
+[![DOI](https://zenodo.org/badge/DOI/xx.xxx/zenodo.xxx.svg)](https://doi.org/xx.xxx/zenodo.xxx)
+
+```bibtex
+@software{nafikov_2025_haplogi,
+  author       = {Rafael A. Nafikov},
+  title        = {HaploGI - Haplotyping Given Inheritance},
+  version      = {1.0.0},
+  year         = 2025,
+  publisher    = {Zenodo},
+  doi          = {xx.xxx/zenodo.xxx},
+  url          = {https://doi.org/xx.xxx/zenodo.xxx}
+}
+```
 
 ---
 
