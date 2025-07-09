@@ -34,7 +34,7 @@ University of Washington
 
 ------------------------------------------------------------------------
 
-## 📚 Paper Citation {#paper-citation}
+## 📚 Paper Citation{#paper-citation}
 
 If you use **HaploGI** in your work, please cite:
 
@@ -43,7 +43,7 @@ Nafikov, R. A., Sohi, H., Nato Jr, A. Q., Horimoto, A. R., Bird, T. D., DeStefan
 
 ------------------------------------------------------------------------
 
-## 📚 Software Citation {#software-citation}
+## 📚 Software Citation{#software-citation}
 
 If you use **HaploGI** in your research, please also cite the following:
 
