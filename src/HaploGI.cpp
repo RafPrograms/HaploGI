@@ -1393,12 +1393,11 @@ public:
 
     int getMI_FrameMarker(int, int, int);
 
-    FrameworkMarkerPos *frame_m_pos = nullptr;
-
-private:
-    int dimn1, dimn2;
+private:  
+    int dimn1, dimn2;  
     Pedigree_info *ped1 = nullptr;
     MI_matrix *mi_matrix = nullptr;
+    FrameworkMarkerPos *frame_m_pos = nullptr;
     std::mt19937& rng;
     DenseMarkerPos *dense_m_pos = nullptr;
     int ***matrixFGL = nullptr;
@@ -1790,8 +1789,8 @@ private:
 FGLshareGroup2::FGLshareGroup2(Pedigree_info *current_ped_ptr,
 Parameters *current_pars_ptr, MI_matrix *mi_matrix_ptr,
 FrameworkMarkerPos *framework_marker_pos, DenseMarkerPos *dense_marker_pos, std::mt19937& rngIn) : 
-ped1{current_ped_ptr}, pars{current_pars_ptr}, mi_matrix{mi_matrix_ptr},
-frame_m_pos{framework_marker_pos}, dense_m_pos{dense_marker_pos}, rng{rngIn}
+ped1{current_ped_ptr}, pars{current_pars_ptr}, mi_matrix{mi_matrix_ptr}, rng{rngIn},
+frame_m_pos{framework_marker_pos}, dense_m_pos{dense_marker_pos}
 {
 
     linkage_boundaries = pars->linkage_region;
@@ -2249,8 +2248,9 @@ std::vector<int> FGLshareGroup2::detectContShareRegion(std::vector<int> &sharePo
     // outputs linkage marker numbers from largest shared region in ROI into results vector
     for (size_t i = 0; i < sharePos.size(); i++)
     {
-
-        if (i >= selectedShare[0] && i <= selectedShare[1])
+        if (selectedShare[0] >= 0 && selectedShare[1] >= 0 &&
+            i >= static_cast<size_t>(selectedShare[0]) &&
+            i <= static_cast<size_t>(selectedShare[1]))
         {
             result1.push_back(sharePos[i]);
         }
@@ -2688,8 +2688,7 @@ std::vector<int> FGLshareGroup2::evalFGLshareLv3(std::map<std::string, std::vect
 
     for (size_t i = 0; i < equilClasses.size(); i++)
     {
-
-        if (equilClasses[i].size() == maxNumIter)
+        if (equilClasses[i].size() == static_cast<size_t>(maxNumIter))
         {
             max_el = i;
             iter_use = equilClasses[i][0];
@@ -2890,8 +2889,8 @@ private:
 Phase2::Phase2(FGL_matrix *cur_matrix_FGL, DenseMarkerGenos *cur_dense_genotypes,
 Pedigree_info *cur_ped1, MatrixHaplo *haplo_window_ptr, int cur_var_bp, int cur_var_pos,
 int iter_num, ofstream *consistencyStreamIn) : matrix_FGL{cur_matrix_FGL}, dense_genotypes{cur_dense_genotypes},
-ped1{cur_ped1}, haplo_window{haplo_window_ptr}, var_bp{cur_var_bp}, var_pos{cur_var_pos},
-cur_iter_num{iter_num}, consistencyStream{consistencyStreamIn}
+ped1{cur_ped1}, haplo_window{haplo_window_ptr}, consistencyStream{consistencyStreamIn}, var_bp{cur_var_bp}, var_pos{cur_var_pos},
+cur_iter_num{iter_num}
 {
     this->initializePhasedGeno();
 }
@@ -3356,8 +3355,9 @@ private:
 
 IntegrationHpSh::IntegrationHpSh(int numSubWGS, int n_wind, Pedigree_info *current_ped_ptr,
 ofstream *haploSharingStreamIn, ofstream *sharedHaploStreamFinalIn, Parameters *current_pars,
-DenseMarkerPos *dense_marker_pos) : num_wind{n_wind}, ped1{current_ped_ptr}, haploSharingStream{haploSharingStreamIn},
-sharedHaploStreamFinal{sharedHaploStreamFinalIn}, pars{current_pars}, dense_m_pos{dense_marker_pos}
+DenseMarkerPos *dense_marker_pos) : matrixHpShareAll{nullptr}, num_chrs{0}, num_wind{n_wind}, 
+ped1{current_ped_ptr}, pars{current_pars}, dense_m_pos{dense_marker_pos}, haploSharingStream{haploSharingStreamIn}, 
+sharedHaploStreamFinal{sharedHaploStreamFinalIn}
 {
 
     // this matrix shows whether a chr is involved in haplotype sharing in a genomic window
@@ -3854,9 +3854,10 @@ private:
 
 HaploShare::HaploShare(int window_size, int cur_wind_in, Pedigree_info *current_ped_ptr,
 IntegrationHpSh *global_hp_share_ptr, Parameters &current_pars, DenseMarkerGenos *cur_dense_genotypes,
-std::vector<int> *current_wind_bps, ofstream *sharedHaploStreamIn) : num_pos{window_size}, ped1{current_ped_ptr},
-global_hp_share{global_hp_share_ptr}, cur_wind{cur_wind_in}, candidate_grp{current_pars.candidate_group},
-dense_genotypes{cur_dense_genotypes}, cur_window_bps{current_wind_bps}, sharedHaploStream{sharedHaploStreamIn}
+std::vector<int> *current_wind_bps, ofstream *sharedHaploStreamIn) : matrixHaploData{nullptr},                     
+num_pos{window_size}, num_chrs{0}, cur_wind{cur_wind_in}, ped1{current_ped_ptr},                      
+global_hp_share{global_hp_share_ptr}, dense_genotypes{cur_dense_genotypes}, cur_window_bps{current_wind_bps},            
+candidate_grp{current_pars.candidate_group}, sharedHaploStream{sharedHaploStreamIn}    
 {
 
     chr = current_pars.chr;
@@ -4574,8 +4575,6 @@ std::vector<int> HaploShare::getVarPos2VarifyAOA1(std::vector<int> &rowNums4Shar
 
     std::vector<int> result; // vector size equal to haplowindow size; -1 = nothing, 0 = all zeros in col, 1 = zeros and ones, 2 = zeros and twos
 
-    int num_rows = rowNums4SharedHaplo.size();
-
     for (int j = 0; j < num_pos; j++)
     {
 
@@ -4945,7 +4944,7 @@ std::vector<int> HaploShare::selectCurHaploSharesStep3(std::vector<int> &els_4_s
         }
 
     
-        std:sort(all_ids_contrib2ShHp.begin(), all_ids_contrib2ShHp.end());
+        std::sort(all_ids_contrib2ShHp.begin(), all_ids_contrib2ShHp.end());
 
         Comp_arrays_venn<string> mytest(&candidate_grp, &all_ids_contrib2ShHp);
         std::vector<string> extra_ids_who_share = mytest.getDifference();
@@ -5746,7 +5745,7 @@ std::vector<int> HaploShare::detectAmbigSharedHaplosPresence()
     
     }
 
-    if (count1 == candidate_grp.size())
+    if (count1 == static_cast<int>(candidate_grp.size()))
     {
         return chrs3D4SecondSharedHp;
 
@@ -5812,7 +5811,7 @@ void HaploShare::evalAmbigSharedHaplosPresence(std::vector<int> &chrs3D4SecondSh
                 proposed_al4ambigHaplo_int.push_back(2);
             }
 
-            else if (count_0 == chrs3D4SecondSharedHp.size())
+            else if (count_0 == static_cast<int>(chrs3D4SecondSharedHp.size()))
             {
                 proposed_al4ambigHaplo.push_back("0");
                 proposed_al4ambigHaplo_int.push_back(0);
@@ -5823,7 +5822,7 @@ void HaploShare::evalAmbigSharedHaplosPresence(std::vector<int> &chrs3D4SecondSh
     }
 
 
-    if (proposed_al4ambigHaplo.size() == num_pos)
+    if (proposed_al4ambigHaplo.size() == static_cast<size_t>(num_pos))
     {
 
         std::string cur_wind_el_str = std::to_string(cur_wind - 1); // window# - 1
@@ -6510,12 +6509,11 @@ Pedigree_info *current_ped_ptr, HaploShare &wind_haplos)
         while (getline(inHaplotypeFile, line))
         {
             count2++;
-
-            char st1[line.size() + 1];
-            line.copy(st1, line.size() + 1);
+            std::vector<char> st1(line.size() + 1);
+            line.copy(st1.data(), line.size() + 1);
             st1[line.size()] = '\0';
 
-            char *token1 = strtok(st1, " ");
+            char *token1 = strtok(st1.data(), " ");
 
             while (token1 != NULL)
             {
@@ -6546,11 +6544,11 @@ Pedigree_info *current_ped_ptr, HaploShare &wind_haplos)
 
                 check1 = 7;
 
-                char st2[line.size() + 1];
-                line.copy(st2, line.size() + 1);
+                std::vector<char> st2(line.size() + 1);
+                line.copy(st2.data(), line.size() + 1);
                 st2[line.size()] = '\0';
 
-                char *token3 = strtok(st2, " ");
+                char *token3 = strtok(st2.data(), " ");
                 int count3 = 0;
 
                 int chr_num_3D;
@@ -7214,20 +7212,20 @@ int main(int argc, char *argv[])
         /// start of handaling of temporary file containing shared haplotype sequence
         int n1 = file_name1.length();
         int n3 = file_name3.length();
-        char file1[n1 + 1];
-        char file3[n3 + 1];
-        std::strcpy(file1, file_name1.c_str());
-        std::strcpy(file3, file_name3.c_str());
+        std::vector<char> file1(n1 + 1);
+        std::vector<char> file3(n3 + 1);
+        std::strcpy(file1.data(), file_name1.c_str());
+        std::strcpy(file3.data(), file_name3.c_str());
 
         if (sharedHpFileFate == -1)
         {
 
-            if (remove(file3) != 0)
+            if (remove(file3.data()) != 0)
             {
                 std::cout << "shared_haplotype.txt cannot be deleted! Please delete this file manually";
             }
 
-            if (rename(file1, file3) != 0)
+            if (rename(file1.data(), file3.data()) != 0)
             {
                 std::cout << "shared_haplotype_temp.txt cannot be renamed into shared_haplotype.txt! Please rename this file manually!";
             }
@@ -7237,7 +7235,7 @@ int main(int argc, char *argv[])
 
         {
 
-            if (remove(file1) != 0)
+            if (remove(file1.data()) != 0)
             {
                 std::cout << "shared_haplotype_temp.txt cannot be deleted! Please disregard this file!";
             }
@@ -7521,20 +7519,21 @@ int main(int argc, char *argv[])
         /// start of handaling of temporary file containing shared haplotype sequence
         int n1 = file_name4.length();
         int n3 = file_name6.length();
-        char file1[n1 + 1];
-        char file3[n3 + 1];
-        std::strcpy(file1, file_name4.c_str());
-        std::strcpy(file3, file_name6.c_str());
+        std::vector<char> file1(n1 + 1);
+        std::vector<char> file3(n3 + 1);
+
+        std::strcpy(file1.data(), file_name4.c_str());
+        std::strcpy(file3.data(), file_name6.c_str());
 
         if (sharedHpFileFate == -1)
         {
 
-            if (remove(file3) != 0)
+            if (remove(file3.data()) != 0)
             {
                 std::cout << "shared_haplotype.txt cannot be deleted! Please delete this file manually";
             }
 
-            if (rename(file1, file3) != 0)
+            if (rename(file1.data(), file3.data()) != 0)
             {
                 std::cout << "shared_haplotype_temp.txt cannot be renamed into shared_haplotype.txt! Please rename this file manually!";
             }
@@ -7544,7 +7543,7 @@ int main(int argc, char *argv[])
 
         {
 
-            if (remove(file1) != 0)
+            if (remove(file1.data()) != 0)
             {
                 std::cout << "shared_haplotype_temp.txt cannot be deleted! Please disregard this file!";
             }
