@@ -1,6 +1,6 @@
 # HaploGI – Haplotyping Given Inheritance
 
-**Version**: 1.0.25  
+**Version**: 1.0.0  
 **Last Modified**: June 28, 2025  
 **Author**: Rafael A. Nafikov  
 Division of Medical Genetics, Department of Medicine, 
@@ -11,9 +11,11 @@ University of Washington
 ## Contents
 - [Introduction](#introduction)
 - [Paper Citation](#paper-citation)
+- [Software Citation](#software-citation)
 - [License](#license)
-- [Software DOI](#software-doi)
 - [Software URL](#software-url)
+- [Build and Install](#build-and-install)
+- [Optional: Install System-Wide](#optional:-install-system-wide)
 - [Getting Started](#getting-started)
 - [Parameter File](#parameter-file)
 - [Input File Formats](#input-file-formats)
@@ -41,13 +43,28 @@ Nafikov, R. A., Sohi, H., Nato Jr, A. Q., Horimoto, A. R., Bird, T. D., DeStefan
 
 ------------------------------------------------------------------------
 
-## Software DOI
+## Software Citation
 
-Please cite this software as:
+If you use **HaploGI** in your research, please also cite the following:
 
-Nafikov et al., HaploGI – Haplotyping Given Inheritance (version 1.0.25), 2025. DOI: [to be added]
+### 📦 Software
 
-*A Zenodo DOI will be provided upon release.*
+[![DOI](https://zenodo.org/badge/DOI/xx.xxx/zenodo.xxx.svg)](https://doi.org/xx.xxx/zenodo.xxx)
+
+``` bibtex
+@software{nafikov_2025_haplogi,
+  author       = {Rafael A. Nafikov},
+  title        = {HaploGI - Haplotyping Given Inheritance},
+  version      = {1.0.0},
+  year         = 2025,
+  publisher    = {Zenodo},
+  doi          = {xx.xxx/zenodo.xxx},
+  url          = {https://doi.org/xx.xxx/zenodo.xxx}
+}
+```
+
+This repository includes a [`CITATION.cff`](https://citation-file.org/) file.\
+On GitHub, click the **“Cite this repository”** button near the top to get citation details in various formats.
 
 ------------------------------------------------------------------------
 
@@ -56,7 +73,7 @@ Nafikov et al., HaploGI – Haplotyping Given Inheritance (version 1.0.25), 2025
 HaploGI is licensed under the GNU General Public License v3.0.  
 © 2025 Rafael A. Nafikov.
 
-See [LICENSE](https://www.gnu.org/licenses/) for full terms.
+See [LICENSE](https://github.com/RafPrograms/HaploGI/blob/main/LICENSE) for full terms.
 
 ---
 
@@ -66,14 +83,70 @@ Repository: [https://github.com/RafPrograms/HaploGI](https://github.com/RafProgr
 
 Files available for download:
 - [`HaploGI.cpp`](https://github.com/RafPrograms/HaploGI/tree/main/src/HaploGI.cpp) (source code)
-- [`manual_HaploGI_v1.0.25.pdf` (PDF)](https://github.com/RafPrograms/HaploGI/blob/main/docs/manual_HaploGI_v1.0.25.pdf) (user manual)
+- [`manual_HaploGI_v1.0.0.pdf` (PDF)](https://github.com/RafPrograms/HaploGI/blob/main/docs/manual_HaploGI_v1.0.0.pdf) (user manual)
 - [`parameter_file_template.txt`](https://github.com/RafPrograms/HaploGI/tree/main/src/parameter_file_template.txt) (parameter file template)
 - [`HaploGI_utility_scripts`](https://github.com/RafPrograms/HaploGI/tree/main/HaploGI_utility_scripts) (Python utility scripts)
 - [`HaploGI_test_data.zip`](https://github.com/RafPrograms/HaploGI/tree/main/data_example) (example dataset)
 
-Compile using:
+---
+
+## Build and Install
+You can build HaploGI from source using CMake:
+
+📋 Requirements
+CMake ≥ 3.10
+
+C++17-compliant compiler (e.g., g++ ≥ 7, clang ≥ 5)
+
+Unix-like environment (Linux/macOS recommended)
+
+
+#### Build Instructions
+
 ```bash
-g++ HaploGI.cpp -o HaploGI
+# Clone the repository (if not done yet)
+git clone https://github.com/RafPrograms/HaploGI.git
+cd HaploGI
+
+# Create a separate build directory
+mkdir build
+cd build
+
+# Generate Makefiles with CMake
+cmake ..
+
+# Compile the program
+make
+```
+
+🚀 Run from Build Directory
+After compiling, you can run HaploGI directly from the build directory:
+
+```bash
+./HaploGI -- [options] [parameter_file_path]
+```
+
+---
+
+## Optional: Install System-Wide
+To install the compiled binary to your system path (default: /usr/local/bin):
+
+```bash
+sudo make install
+```
+
+This will allow you to run HaploGI from anywhere in your terminal.
+
+💡 Note: The binary is installed to the bin/ directory under your system’s CMAKE_INSTALL_PREFIX (default: /usr/local/bin). 
+
+
+#### Custom Install Location
+You can specify an install prefix:
+
+```bash
+cmake -DCMAKE_INSTALL_PREFIX=/your/custom/path ..
+make
+sudo make install
 ```
 
 ---
@@ -402,7 +475,7 @@ This file contains information about haplotype sharing across all genomic window
 - Entries indicate the presence of a shared haplotype:
   - `1` = Shared haplotype present in a **case**
   - `2` = Shared haplotype present in a **control**
-  - `0` = No shared haplotype present
+  - `0` = No shared haplotype present.
 
 ### Usage
 
@@ -416,7 +489,7 @@ You can use the provided Python utility script `plot_haplotype_sharing.py` to ge
 
 A number of Python utility scripts are available to assist with preparing HaploGI input files, processing output data, and visualizing results, at: [`HaploGI_utility_scripts`](https://github.com/RafPrograms/HaploGI/tree/main/HaploGI_utility_scripts).
 
-Other Python utiliy scripts that have not been introduced yet in this manual are:
+Other Python utility scripts that have not been introduced yet in this manual are:
 
 🛠️ [risk_alleles_variants.py](https://github.com/RafPrograms/HaploGI/tree/main/HaploGI_utility_scripts/output_files_processing/variants_with_alleles_unique_to_risk_haplotype) – Identifies and outputs variants whose alleles are uniquely present on the risk haplotype. The resulting file also includes associated metadata extracted from the input VCF file.
 
