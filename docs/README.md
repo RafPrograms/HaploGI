@@ -15,7 +15,7 @@ University of Washington
 - [License](#license)
 - [Software URL](#software-url)
 - [Build and Install](#build-and-install)
-- [Optional: Install System-Wide](#optional:-install-system-wide)
+- [Optional: Install System-Wide](#optional-install-system-wide)
 - [Getting Started](#getting-started)
 - [Parameter File](#parameter-file)
 - [Input File Formats](#input-file-formats)
