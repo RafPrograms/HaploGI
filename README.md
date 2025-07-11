@@ -63,8 +63,7 @@ If you use **HaploGI** in your research, please also cite the following:
 }
 ```
 
-This repository includes a [`CITATION.cff`](https://citation-file.org/) file.\
-On GitHub, click the **“Cite this repository”** button near the top to get citation details in various formats.
+This repository includes a [`CITATION.cff`](https://citation-file.org/) file. On GitHub, you can click the **“Cite this repository”** button near the top of the page to view citation information in multiple formats (BibTeX, EndNote, RIS, etc.).
 
 ------------------------------------------------------------------------
 
