@@ -1320,7 +1320,7 @@ std::vector<std::string> DenseMarkerGenos::getGeno(int var_bp_pos, int subject_i
 
 double calcWeight(int m1, int m2, double d1, double d2, double pos)
 {
-    double p;
+    double p = 0.0;
     double x = (pos - d1) / 100;
     double y = (d2 - pos) / 100;
     double r_x = (1 - exp(-2 * x)) / 2;
@@ -2283,7 +2283,7 @@ int FGLshareGroup2::detIdShareEl (std::vector<int> ids2select, std::vector<int> 
 // returns element number for arrays
 // !!! check whether vector sizes >= 2 before executing this function
 
-    int result1;
+    int result1 = -2;
     int minShare = minRg;
     std::vector<int> maxIdsList;
     std::vector<int> elHolder; // contains element # to connect entries in selectedIds to those in ids2select and shareReg2select
@@ -2345,7 +2345,7 @@ int FGLshareGroup2::detIdShareEl (std::vector<int> ids2select, std::vector<int> 
             shareLength.push_back(shareReg2select[maxIdsList[i]]);
         }
                 
-        int maxLength2;
+        int maxLength2 = -1;
         if (!shareLength.empty())
         {
             maxLength2 = *max_element(shareLength.begin(), shareLength.end());
@@ -2377,8 +2377,8 @@ void FGLshareGroup2::evalFGLshareLvF(int iter_num, std::map<int, std::vector<int
     std::vector<int> keys2keep2;
     std::vector<int> shareLength;
     std::vector<int> casesAll;
-    int maxCases;
-    int maxLength;
+    int maxCases = -1;
+    int maxLength = -1;
 
     if (sharingGrpsV2.size() > 1) // selection based on max number of all cases sharing same FGL
     {
@@ -2670,7 +2670,7 @@ std::vector<int> FGLshareGroup2::evalFGLshareLv3(std::map<std::string, std::vect
 {
 
     std::vector<int> result1;// [0] = iteration # for phasing; [1]+ = IDs for cases from core group
-    int max_el;
+    int max_el = -1;
     int iter_use;// iteration # to use for phasing and haplotyping
 
     std::vector<int> sizeEquilCl;
@@ -2680,7 +2680,7 @@ std::vector<int> FGLshareGroup2::evalFGLshareLv3(std::map<std::string, std::vect
         sizeEquilCl.push_back(equilClasses[i].size());
     }
 
-    int maxNumIter;
+    int maxNumIter = -1;
     if (!sizeEquilCl.empty())
     {
         maxNumIter = *max_element(sizeEquilCl.begin(), sizeEquilCl.end());
@@ -3512,9 +3512,8 @@ std::vector<int> IntegrationHpSh::resolveDoubleHaploSharing()
     std::vector<int> result1; // push window numbers where 2nd shared haplotype sequence should be printed into risk haplotype sequence file
     std::vector<int> wind2examine;// 1st and last genomic window # in ROI
     std::vector<double> linkage_boundaries;// ROI boundaries in cM
-    std::vector<vector<std::string>> subjectsWithSharedHaplo; // 0 = ids with maternal chr; 1 = ids with parternal chr
-   
-
+    std::vector<std::vector<std::string>> subjectsWithSharedHaplo(2); // 0 = ids with maternal chr; 1 = ids with parternal chr
+ 
     linkage_boundaries = pars->linkage_region;
 
     wind2examine = dense_m_pos->getROIboundWindNum(linkage_boundaries);
@@ -6551,7 +6550,7 @@ Pedigree_info *current_ped_ptr, HaploShare &wind_haplos)
                 char *token3 = strtok(st2.data(), " ");
                 int count3 = 0;
 
-                int chr_num_3D;
+                int chr_num_3D = -1;
                 std::vector<int> haplo_seq;
 
                 while (token3 != NULL)
