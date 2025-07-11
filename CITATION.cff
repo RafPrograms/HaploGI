@@ -14,8 +14,8 @@ authors:
     orcid: https://orcid.org/0000-0001-7288-0981
 
 license: GPL-3.0-only
-repository-code: https://github.com/yourusername/HaploGI
-url: https://github.com/yourusername/HaploGI
+repository-code: https://github.com/RafPrograms/HaploGI
+url: https://github.com/RafPrograms/HaploGI
 abstract: >
   HaploGI (Haplotyping Given Inheritance) is a software package developed for 
   pedigree-based haplotyping of whole-genome sequencing (WGS) data and determination 
