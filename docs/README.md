@@ -49,7 +49,7 @@ If you use **HaploGI** in your research, please also cite the following:
 
 ### 📦 Software
 
-[![DOI](https://zenodo.org/badge/DOI/xx.xxx/zenodo.xxx.svg)](https://doi.org/xx.xxx/zenodo.xxx)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15860913.svg)](https://doi.org/10.5281/zenodo.15860913)
 
 ``` bibtex
 @software{nafikov_2025_haplogi,
@@ -58,8 +58,8 @@ If you use **HaploGI** in your research, please also cite the following:
   version      = {1.0.0},
   year         = 2025,
   publisher    = {Zenodo},
-  doi          = {xx.xxx/zenodo.xxx},
-  url          = {https://doi.org/xx.xxx/zenodo.xxx}
+  doi          = {10.5281/zenodo.15860913},
+  url          = {https://doi.org/10.5281/zenodo.15860913}
 }
 ```
 
