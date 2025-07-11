@@ -132,7 +132,7 @@ For full details on how to test-run `HaploGI`, and for descriptions of required 
 
 - 📄 [HaploGI manual (Markdown)](https://github.com/RafPrograms/HaploGI/tree/main/docs)  
 or
-- 📑 [HaploGI manual (PDF)](https://github.com/RafPrograms/HaploGI/blob/main/docs/manual_HaploGI_v1.0.25.pdf)
+- 📑 [HaploGI manual (PDF)](https://github.com/RafPrograms/HaploGI/blob/main/docs/manual_HaploGI_v1.0.0.pdf)
 
 ---
 
