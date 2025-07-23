@@ -159,7 +159,7 @@ Nafikov, R. A., Sohi, H., Nato Jr, A. Q., Horimoto, A. R., Bird, T. D., DeStefan
 
 ## References
 
-1. Nafikov et al., (2025). Variant prioritization by pedigree-based haplotyping. *Genetic Epidemiology*.
+1. Nafikov et al., (2025). Variant prioritization by pedigree-based haplotyping. Submitted to *Genetic Epidemiology*.
 2. Nafikov et al., (2018). Dealing with Admixture in Caribbean Hispanic Families. *Genetic Epidemiology*. [DOI:10.1002/gepi.22133](https://doi.org/10.1002/gepi.22133)
 3. Tong & Thompson (2007). Multilocus lod scores. *Human Heredity*. [DOI:10.1159/000109731](https://doi.org/10.1159/000109731)
 
@@ -168,7 +168,7 @@ Nafikov, R. A., Sohi, H., Nato Jr, A. Q., Horimoto, A. R., Bird, T. D., DeStefan
 ## Web Resources
 
 - **HaploGI**: [https://github.com/RafPrograms/HaploGI](https://github.com/RafPrograms/HaploGI)
-- **Morgan Package**: [Morgan site](https://faculty.washington.edu/eathomp/Genepi/MORGAN/Morgan.shtml)
+- **Morgan Package**: [Morgan site](https://faculty.washington.edu/eathomp/Genepi/pangaea.shtml)
 - **1000 Genomes Project**: [https://www.internationalgenome.org](https://www.internationalgenome.org)
 
 ---

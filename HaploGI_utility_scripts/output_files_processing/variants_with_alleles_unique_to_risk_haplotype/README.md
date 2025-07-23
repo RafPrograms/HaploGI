@@ -206,7 +206,7 @@ https://www.gnu.org/licenses/gpl-3.0.html
 Unless required by applicable law or agreed to in writing, the software is distributed  
 **"AS IS"**, without warranties or conditions of any kind, either express or implied.
 
-See the [LICENSE](LICENSE) file in this repository for complete details.
+See the [LICENSE](./LICENSE) file in this repository for complete details.
 
 ---
 

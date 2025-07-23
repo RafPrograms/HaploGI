@@ -63,14 +63,14 @@ If you use **HaploGI** in your research, please also cite the following:
 }
 ```
 
-This repository includes a [`CITATION.cff`](https://github.com/citation-file-format/citation-file-format) file. On GitHub, you can click the **“Cite this repository”** button near the top of the page to view citation information in multiple formats (BibTeX, EndNote, RIS, etc.).
+This repository includes a [`CITATION.cff`](./CITATION.cff) file. On GitHub, you can click the **“Cite this repository”** button near the top of the page to view citation information in multiple formats (BibTeX, EndNote, RIS, etc.).
 
 ------------------------------------------------------------------------
 
 ## License
 
 HaploGI is a C++ program released under the **GNU General Public License v3.0**.\
-See the full license at <https://www.gnu.org/licenses/>.
+See [LICENSE](https://github.com/RafPrograms/HaploGI/blob/main/LICENSE) for full terms.
 
 © 2025 Rafael A. Nafikov
 

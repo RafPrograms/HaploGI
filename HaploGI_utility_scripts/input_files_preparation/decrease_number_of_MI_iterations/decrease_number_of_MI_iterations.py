@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
-# dicrease_number_of_MI_iterations.py
+# decrease_number_of_MI_iterations.py
 #
 # Author: Rafael Nafikov
 # Version: 1.0
@@ -13,7 +13,7 @@
 #    how many MI iterations to retain in the output MI file.
 #
 # Usage:
-#     python dicrease_number_of_MI_iterations.py --MI matrix.txt \
+#     python decrease_number_of_MI_iterations.py --MI matrix.txt \
 #                                               [--output_dir results]
 #
 # Arguments:
@@ -40,7 +40,7 @@ import os
 
 def setup_logging(output_dir):
     os.makedirs(output_dir, exist_ok=True)
-    log_file = os.path.join(output_dir, "dicrease_number_of_MI_iterations.log")
+    log_file = os.path.join(output_dir, "decrease_number_of_MI_iterations.log")
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s - %(levelname)s - %(message)s",
