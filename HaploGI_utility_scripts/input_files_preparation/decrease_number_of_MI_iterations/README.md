@@ -122,12 +122,12 @@ This project is licensed under the **GNU General Public License v3.0 or later** 
 It uses the SPDX license identifier `GPL-3.0-or-later` in source files for standardized license declaration.
 
 You can view the full license text at:  
-https://www.gnu.org/licenses/gpl-3.0.html
+https://github.com/RafPrograms/HaploGI/blob/main/LICENSE
 
 Unless required by applicable law or agreed to in writing, the software is distributed  
 **"AS IS"**, without warranties or conditions of any kind, either express or implied.
 
-See the [LICENSE](./LICENSE) file in this repository for complete details.
+See the [LICENSE](..../LICENSE) file in this repository for complete details.
 
 ---
 
