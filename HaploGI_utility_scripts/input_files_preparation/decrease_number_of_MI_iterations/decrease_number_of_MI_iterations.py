@@ -22,14 +22,10 @@
 #
 # Output:
 #     - selected_<N>_blocks_every_<K>_th_block.txt
-#     - extract_mi_blocks.log
+#     - decrease_number_of_MI_iterations.log
 #
 # Requirements:
 #     - Python 3.x
-#
-# License:
-#     GNU General Public License v3.0 or later
-#     See https://www.gnu.org/licenses/gpl-3.0.html
 #
 
 __version__ = "1.0"
@@ -50,27 +46,44 @@ def setup_logging(output_dir):
         ]
     )
 
-def extract_blocks(lines, col1_val):
+def extract_blocks(lines):
     blocks = []
+
+    # Extract first value in column 1
+    first_line = lines[0].strip().split()
+    if not first_line:
+        logging.warning("First line is empty or malformed.")
+        return []
+
+    col1_val = first_line[0]
+    logging.info(f"Looking for repeating value in col1: {col1_val}")
+
+    # Find the index of the second occurrence of col1_val
+    first_index = None
+    second_index = None
+
+    for idx, line in enumerate(lines[1:], start=1):
+        parts = line.strip().split()
+        if parts and parts[0] == col1_val:
+            second_index = idx
+            break
+
+    if second_index is None:
+        logging.warning(f"Second occurrence of '{col1_val}' not found.")
+        return []
+
+    block_size = second_index
+    logging.info(f"Detected block size: {block_size}")
+
+    # Extract blocks of size `block_size`
     i = 0
-    while i < len(lines) - 1:
-        line1 = lines[i].strip().split()
-        line2 = lines[i + 1].strip().split()
-        if line1 and line2 and line1[0] == col1_val and line2[0] == col1_val:
-            block_start = i
-            i += 2
-            block = lines[block_start:block_start+2]
-            while i < len(lines) - 1:
-                next1 = lines[i].strip().split()
-                next2 = lines[i + 1].strip().split()
-                if next1 and next2 and next1[0] == col1_val and next2[0] == col1_val:
-                    break
-                block.append(lines[i])
-                i += 1
-            blocks.append(block)
-        else:
-            i += 1
+    while i + block_size <= len(lines):
+        block = lines[i:i + block_size]
+        blocks.append(block)
+        i += block_size
+
     return blocks
+
 
 def main():
     parser = argparse.ArgumentParser(description="Extract every N-th block from a haplotype matrix.")
@@ -92,13 +105,7 @@ def main():
             logging.warning("The input file is empty.")
             return
 
-        first_line = lines[0].strip().split()
-        if not first_line:
-            logging.warning("First line is empty or malformed.")
-            return
-        col1_val = first_line[0]
-
-        blocks = extract_blocks(lines, col1_val)
+        blocks = extract_blocks(lines)
         total_blocks = len(blocks)
 
         if total_blocks == 0:
@@ -144,3 +151,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

@@ -5888,6 +5888,19 @@ void trim(string& str)
    while(str[str.size() - 1] == ' ') str.pop_back();
 }
 
+// Helper to trim whitespace from a string (both ends)
+std::string trim(const std::string& s) {
+    auto start = s.begin();
+    while (start != s.end() && std::isspace(*start)) start++;
+
+    auto end = s.end();
+    do {
+        end--;
+    } while (std::distance(start, end) > 0 && std::isspace(*end));
+
+    return std::string(start, end + 1);
+}
+
 void readParameterFile(std::string &parameterFileName, Parameters &current_pars)
 {
 
@@ -6041,15 +6054,29 @@ void readPedigreeFile(Parameters &current_pars, std::vector<Pedigree> &ped1)
 
     if (inPedigreeFile.is_open())
     {
-        while (getline(inPedigreeFile, line))
-        {
-            std::regex pat1("^\\*");   // ignore lines with asterisks
-            std::regex pat2("^input"); // ignore lines starting with "input"
 
-            
-            Pedigree temp1;
-            if (!std::regex_search(line, pat1) && !std::regex_search(line, pat2) && !line.empty())
-            {
+        // Regex to match lines starting with one or more '*'
+        std::regex pat_stars("^\\*+");
+
+        bool foundDataStart = false;
+
+        while (getline(inPedigreeFile, line)) {
+            trim(line);
+    
+            // Skip all lines before the first line that starts with '**'
+            if (!foundDataStart) {
+                if (std::regex_match(line, pat_stars)) {
+                    foundDataStart = true;
+                }
+                continue; // Skip everything before the marker line
+            }
+    
+            // After marker: skip empty lines or comment lines
+            if (line.empty()) {
+                continue;
+            }
+
+                Pedigree temp1;
                 id_count++;
                 std::stringstream ss(line);
                 ss >> temp1.subject_id_orig;
@@ -6059,7 +6086,7 @@ void readPedigreeFile(Parameters &current_pars, std::vector<Pedigree> &ped1)
                 ss >> temp1.pheno;
                 temp1.subject_id = to_string (id_count);
                 ped1.push_back(temp1);
-            }
+            
         }
     }
 
